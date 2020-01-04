@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"v"
+	],
+	
+	"key":
+	{
+		"v": { "item": "vimion:vimion_block" }
+	},
+	
+	"result": {
+		 "item": "vimion:vimion_gemstone",
+		 "count": 9
+		 }
+}

@@ -1,0 +1,11 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "vimion:block/expionite_crate", "x": -90},
+        "facing=south": { "model": "vimion:block/expionite_crate", "x": -90, "y": 180 },
+        "facing=west": { "model": "vimion:block/expionite_crate", "x": -90, "y": 270 },
+        "facing=east": { "model": "vimion:block/expionite_crate", "x": -90, "y": 90 },
+        "facing=up": { "model": "vimion:block/expionite_crate" },
+        "facing=down": { "model": "vimion:block/expionite_crate", "x": 180 }
+    }
+}

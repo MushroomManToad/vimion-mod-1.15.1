@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": 
+	{
+        "layer0": "vimion:block/berries/berries_of_the_universe_bush_stage3"
+    }
+}

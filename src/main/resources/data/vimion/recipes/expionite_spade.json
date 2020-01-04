@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"e",
+		"s",
+		"s"
+	],
+	
+	"key":
+	{
+		"s": { "item": "minecraft:stick" },
+		"e": { "item": "vimion:expion_gemstone"}
+	},
+	
+	"result": { "item": "vimion:expionite_spade" }
+}

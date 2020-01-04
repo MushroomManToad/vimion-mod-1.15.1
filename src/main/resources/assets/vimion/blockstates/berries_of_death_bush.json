@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "age=0": { "model": "vimion:block/berries/berries_of_death_bush_stage0" },
+        "age=1": { "model": "vimion:block/berries/berries_of_death_bush_stage1" },
+        "age=2": { "model": "vimion:block/berries/berries_of_death_bush_stage2" },
+        "age=3": { "model": "vimion:block/berries/berries_of_death_bush_stage3" }
+    }
+}

@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"ggg",
+		" s ",
+		" s "
+	],
+	
+	"key":
+	{
+		"s": { "item": "minecraft:stick" },
+		"g": { "item": "vimion:solarion_gemstone"}
+	},
+	
+	"result": { "item": "vimion:solarionite_pickaxe" }
+}

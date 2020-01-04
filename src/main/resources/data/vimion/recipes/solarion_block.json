@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"vvv",
+		"vvv",
+		"vvv"
+	],
+	
+	"key":
+	{
+		"v": { "item": "vimion:solarion_gemstone" }
+	},
+	
+	"result": { "item": "vimion:solarion_block" }
+}

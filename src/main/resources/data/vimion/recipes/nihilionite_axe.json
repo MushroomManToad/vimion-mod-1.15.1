@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"nn",
+		"sn",
+		"s "
+	],
+	
+	"key":
+	{
+		"s": { "item": "minecraft:stick" },
+		"n": { "item": "vimion:nihilion_gemstone"}
+	},
+	
+	"result": { "item": "vimion:nihilionite_axe" }
+}

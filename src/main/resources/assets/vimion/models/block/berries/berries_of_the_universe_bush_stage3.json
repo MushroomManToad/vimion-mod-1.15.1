@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "vimion:block/berries/berries_of_the_universe_bush_stage3"
+    }
+}

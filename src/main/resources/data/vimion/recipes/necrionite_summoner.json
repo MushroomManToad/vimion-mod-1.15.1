@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"nnn",
+		"ooo"
+	],
+	
+	"key":
+	{
+		"n": { "item": "vimion:necrion_gemstone" },
+		"o": { "item": "minecraft:obsidian" }
+	},
+	
+	"result": { "item": "vimion:necrionite_summoner" }
+}

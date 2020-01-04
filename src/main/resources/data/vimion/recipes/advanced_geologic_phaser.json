@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"vvv",
+		"vpv",
+		"vvv"
+	],
+	
+	"key":
+	{
+		"v": { "item": "vimion:vimion_gemstone" },
+		"p": { "item": "vimion:geologic_phaser"}
+	},
+	
+	"result": { "item": "vimion:advanced_geologic_phaser" }
+}

@@ -1,0 +1,216 @@
+{
+	"spectral_sheep_say":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Sheep Bahhs",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/sheep/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say3", "stream": true}
+        ]
+    },
+    "spectral_sheep_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Sheep Hurts",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/sheep/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say3", "stream": true}
+        ]
+    },
+    "spectral_sheep_death":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Sheep Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/sheep/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/sheep/say3", "stream": true}
+        ]
+    },
+    "spectral_chicken_say":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Chicken Clucks",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/chicken/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/chicken/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/chicken/say3", "stream": true}
+        ]
+    },
+    "spectral_chicken_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Chicken Hurts",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/chicken/hurt1", "stream": true},
+        	{ "name": "vimion:mob/spectral/chicken/hurt2", "stream": true}
+        ]
+    },
+    "spectral_chicken_death":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Chicken Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/chicken/hurt1", "stream": true},
+        	{ "name": "vimion:mob/spectral/chicken/hurt2", "stream": true}
+        ]
+    },
+    "spectral_cow_say":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Cow Moos",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/cow/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/say3", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/say4", "stream": true}
+        ]
+    },
+    "spectral_cow_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Cow Hurts",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/cow/hurt1", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/hurt2", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/hurt3", "stream": true}
+        ]
+    },
+    "spectral_cow_death":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Cow Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/cow/hurt1", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/hurt2", "stream": true},
+        	{ "name": "vimion:mob/spectral/cow/hurt3", "stream": true}
+        ]
+    },
+    "spectral_pig_say":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Pig Oinks",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/pig/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/pig/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/pig/say3", "stream": true}
+        ]
+    },
+    "spectral_pig_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Pig Hurts",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/pig/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/pig/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/pig/say3", "stream": true}
+        ]
+    },
+    "spectral_pig_death":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Pig Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/pig/death", "stream": true}
+        ]
+    },
+    "spectral_rabbit_say":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Rabbit Squeak",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/rabbit/say1", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/say2", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/say3", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/say4", "stream": true}
+        ]
+    },
+    "spectral_rabbit_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Rabbit Hurts",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/rabbit/hurt1", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/hurt2", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/hurt3", "stream": true},
+        	{ "name": "vimion:mob/spectral/rabbit/hurt4", "stream": true}
+        ]
+    },
+    "spectral_rabbit_death":
+    {
+        "category": "entity",
+        "subtitle": "Spectral Rabbit Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/spectral/rabbit/death", "stream": true}
+        ]
+    },
+    "vimionic_abomination_say":
+    {
+        "category": "entity",
+        "subtitle": "Vimionic Abomination Growls",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/vimion/say1", "stream": true},
+        	{ "name": "vimion:mob/boss/abomination/vimion/say2", "stream": true},
+        	{ "name": "vimion:mob/boss/abomination/vimion/say3", "stream": true}
+        ]
+    },
+    "vimionic_abomination_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Vimionic Abomination Suffers",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/vimion/hurt1", "stream": true},
+        	{ "name": "vimion:mob/boss/abomination/vimion/hurt2", "stream": true}
+        ]
+    },
+    "vimionic_abomination_death":
+    {
+        "category": "entity",
+        "subtitle": "Vimionic Abomination Fades",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/vimion/death1", "stream": true}
+        ]
+    },
+    "expionic_abomination_say":
+    {
+        "category": "entity",
+        "subtitle": "Expionic Abomination Hisses",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/expion/say1", "stream": true}
+        ]
+    },
+    "expionic_abomination_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Expionic Abomination Screams",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/expion/hurt1", "stream": true}
+        ]
+    },
+    "expionic_abomination_death":
+    {
+        "category": "entity",
+        "subtitle": "Expionic Abomination Collapses",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/expion/death1", "stream": true}
+        ]
+    },
+    "absorption_pillar_summon":
+    {
+        "category": "entity",
+        "subtitle": "Absorption Pillar Summoned",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/vimion/summon_pillar", "stream": true}
+        ]
+    },
+    "expionic_abomination_teleport":
+    {
+        "category": "entity",
+        "subtitle": "Expionic Abomination Teleports",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/expion/teleport", "stream": true}
+        ]
+    }
+}

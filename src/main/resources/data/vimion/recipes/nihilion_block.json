@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"vvv",
+		"vvv",
+		"vvv"
+	],
+	
+	"key":
+	{
+		"v": { "item": "vimion:nihilion_gemstone" }
+	},
+	
+	"result": { "item": "vimion:nihilion_block" }
+}

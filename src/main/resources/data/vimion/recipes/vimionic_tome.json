@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "vimion:vimion_gemstone"
+    }
+  ],
+  "result": {
+    "item": "vimion:vimionic_tome"
+  }
+}

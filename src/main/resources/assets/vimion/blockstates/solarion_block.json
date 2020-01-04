@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "vimion:block/solarion_block" }
+    }
+}

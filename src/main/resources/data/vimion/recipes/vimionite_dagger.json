@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"i",
+		"i",
+		"s"
+	],
+	
+	"key":
+	{
+		"i": { "item": "vimion:vimion_gemstone" },
+		"s": { "item": "minecraft:stick"}
+	},
+	
+	"result": { "item": "vimion:vimionite_dagger" }
+}
