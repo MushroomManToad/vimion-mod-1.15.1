@@ -19,7 +19,7 @@ public class SpectralSheepRenderer extends MobRenderer<SpectralSheepEntity, Spec
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(SpectralSheepEntity entity) 
+	public ResourceLocation getEntityTexture(SpectralSheepEntity entity) 
 	{
 		return ModEntities.location("textures/entity/spectral/spectral_sheep.png");
 	}

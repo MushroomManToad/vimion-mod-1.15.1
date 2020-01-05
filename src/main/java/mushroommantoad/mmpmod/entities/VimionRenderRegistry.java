@@ -16,6 +16,9 @@ import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitEntity;
 import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitRenderer;
 import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepEntity;
 import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepRenderer;
+import mushroommantoad.mmpmod.init.ModEntities;
+import net.minecraft.entity.CreatureEntity;
+import net.minecraft.entity.EntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -23,16 +26,17 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 @OnlyIn(Dist.CLIENT)
 public class VimionRenderRegistry 
 {
+	@SuppressWarnings("unchecked")
 	public static void registerEntityRenders()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(SpectralSheepEntity.class, new SpectralSheepRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(SpectralCowEntity.class, new SpectralCowRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(SpectralChickenEntity.class, new SpectralChickenRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(SpectralPigEntity.class, new SpectralPigRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(SpectralRabbitEntity.class, new SpectralRabbitRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(VimionicAbominationEntity.class, new VimionicAbominationRenderer.RenderFactory());
-		RenderingRegistry.registerEntityRenderingHandler(ExpionicAbominationEntity.class, new ExpionicAbominationRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_SHEEP, SpectralSheepRenderer::new);
+		//RenderingRegistry.registerEntityRenderingHandler(SpectralCowEntity.class, new SpectralCowRenderer.RenderFactory());
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_CHICKEN, new SpectralChickenRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(SpectralPigEntity.class, new SpectralPigRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(SpectralRabbitEntity.class, new SpectralRabbitRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(VimionicAbominationEntity.class, new VimionicAbominationRenderer.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(ExpionicAbominationEntity.class, new ExpionicAbominationRenderer.RenderFactory());
 		
-		RenderingRegistry.registerEntityRenderingHandler(EntityAbsorptionSpire.class, new RendererAbsorptionSpire.RenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityAbsorptionSpire.class, new RendererAbsorptionSpire.RenderFactory());
 	}
 }

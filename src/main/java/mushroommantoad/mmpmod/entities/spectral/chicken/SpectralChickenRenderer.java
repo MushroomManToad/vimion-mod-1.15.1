@@ -18,7 +18,7 @@ public class SpectralChickenRenderer extends MobRenderer<SpectralChickenEntity, 
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(SpectralChickenEntity entity) 
+	public ResourceLocation getEntityTexture(SpectralChickenEntity entity) 
 	{
 		return ModEntities.location("textures/entity/spectral/spectral_chicken.png");
 	}

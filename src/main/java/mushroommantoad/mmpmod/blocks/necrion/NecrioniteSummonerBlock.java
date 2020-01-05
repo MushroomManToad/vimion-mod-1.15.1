@@ -28,12 +28,4 @@ public class NecrioniteSummonerBlock extends Block
 	{
 		return BlockRenderType.MODEL;
 	}
-
-	/*
-	@Override
-	public BlockRenderLayer getRenderLayer() 
-	{
-		return BlockRenderLayer.CUTOUT_MIPPED;
-	}
-	*/
 }

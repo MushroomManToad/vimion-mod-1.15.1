@@ -91,7 +91,7 @@ public class Main {
 		
 		@SubscribeEvent
 		public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
-			//ModEntities.registerAll(event, logger);
+			ModEntities.registerAll(event, logger);
 		}
 	}
 }

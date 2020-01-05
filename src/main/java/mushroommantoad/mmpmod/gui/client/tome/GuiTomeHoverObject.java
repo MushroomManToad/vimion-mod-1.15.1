@@ -115,9 +115,9 @@ public class GuiTomeHoverObject
 	    else tome.blit(i + x, j + y, 0, 200, 28, 28);
 	    
 	    tome.getMinecraft().getTextureManager().bindTexture(icon);
-	    RenderSystem.scaled(0.0625, 0.0625, 0);
+	    RenderSystem.scaled(0.0625, 0.0625, 1);
 	    tome.blit(16 * (i + x) + 96, 16 * (j + y) + 96, 0, 0, 256, 256);
-	    RenderSystem.scaled(16, 16, 0);
+	    RenderSystem.scaled(16, 16, 1);
 	}
 	
 	public void drawHoverBackground()

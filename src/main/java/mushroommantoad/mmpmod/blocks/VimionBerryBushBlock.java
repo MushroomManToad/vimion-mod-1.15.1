@@ -4,6 +4,7 @@ import java.util.Random;
 
 import mushroommantoad.mmpmod.init.ModBlocks;
 import mushroommantoad.mmpmod.init.ModItems;
+import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IGrowable;
@@ -18,6 +19,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
@@ -29,6 +31,7 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 {
@@ -69,11 +72,11 @@ public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public void tick(BlockState state, World worldIn, BlockPos pos, Random random) 
-	{
-		super.tick(state, worldIn, pos, random);
-		int i = state.get(AGE);
-		if (i < 3 && random.nextInt(5) == 0 && worldIn.getLightSubtracted(pos.up(), 0) >= 9) 
+	public void func_225534_a_(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+		super.func_225534_a_(state, worldIn, pos, random);
+	    int i = state.get(AGE);
+	    
+		if (i < 3 && random.nextInt(5) == 0 && i < 3 && worldIn.func_226659_b_(pos.up(), 0) >= 9) 
 		{
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i + 1)), 2);
 		}
@@ -86,10 +89,10 @@ public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 		{
 			if(!(state.getBlock() == ModBlocks.berries_of_the_universe_bush)) entityIn.setMotionMultiplier(state, new Vec3d((double)0.8F, 0.75D, (double)0.8F));
 			if(state.getBlock() == ModBlocks.berries_of_the_universe_bush && entityIn instanceof PlayerEntity) entityIn.setMotionMultiplier(state, new Vec3d((double)0.01F, 0.01D, (double)0.01F));
-			if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != entityIn.posX || entityIn.lastTickPosZ != entityIn.posZ)) 
+			if (!worldIn.isRemote && state.get(AGE) > 0 && (entityIn.lastTickPosX != VTranslate.getEntityX(entityIn) || entityIn.lastTickPosZ != VTranslate.getEntityZ(entityIn))) 
 			{
-				double d0 = Math.abs(entityIn.posX - entityIn.lastTickPosX);
-				double d1 = Math.abs(entityIn.posZ - entityIn.lastTickPosZ);
+				double d0 = Math.abs(VTranslate.getEntityX(entityIn) - entityIn.lastTickPosX);
+				double d1 = Math.abs(VTranslate.getEntityZ(entityIn) - entityIn.lastTickPosZ);
 				if (d0 >= (double)0.003F || d1 >= (double)0.003F) 
 				{
 					if(state.getBlock() == ModBlocks.berries_of_life_bush && ((LivingEntity) entityIn).isEntityUndead()) ((LivingEntity) entityIn).addPotionEffect(new EffectInstance(Effects.WITHER, 40));
@@ -104,13 +107,13 @@ public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
+	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 	{
 		int i = state.get(AGE);
 		boolean flag = i == 3;
 		if (!flag && player.getHeldItem(handIn).getItem() == Items.BONE_MEAL) 
 		{
-			return false;
+			return ActionResultType.FAIL;
 		} 
 		else if (i > 1) 
 		{
@@ -126,11 +129,11 @@ public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 			spawnAsEntity(worldIn, pos, new ItemStack(Items.SWEET_BERRIES, j + (flag ? 1 : 0)));
 			worldIn.playSound((PlayerEntity)null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
 			worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(1)), 2);
-			return true;
+			return ActionResultType.SUCCESS;
 		} 
 		else 
 		{
-			return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+			return super.func_225533_a_(state, worldIn, pos, player, handIn, hit);
 		}
 	}
 
@@ -153,7 +156,7 @@ public class VimionBerryBushBlock extends VimionBushBlock implements IGrowable
 	}
 		   
 	@Override
-	public void grow(World worldIn, Random rand, BlockPos pos, BlockState state) 
+	public void func_225535_a_(ServerWorld worldIn, Random rand, BlockPos pos, BlockState state) 
 	{
 		int i = Math.min(3, state.get(AGE) + 1);
 		worldIn.setBlockState(pos, state.with(AGE, Integer.valueOf(i)), 2);

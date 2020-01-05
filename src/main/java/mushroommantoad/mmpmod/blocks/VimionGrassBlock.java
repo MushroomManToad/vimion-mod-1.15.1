@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
@@ -106,7 +107,7 @@ public class VimionGrassBlock extends Block
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
+	public ActionResultType func_225533_a_(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) 
 	{
 		ItemStack stack = player.getHeldItem(handIn);
 		Direction dir = hit.getFace();
@@ -119,6 +120,6 @@ public class VimionGrassBlock extends Block
 			if(state.getBlock() == ModBlocks.nihilionic_grass_block) worldIn.setBlockState(pos.add(0, 1, 0), ModBlocks.berries_of_annihilation_bush.getDefaultState());
 			if(state.getBlock() == ModBlocks.expionic_grass_block) worldIn.setBlockState(pos.add(0, 1, 0), ModBlocks.berries_of_the_universe_bush.getDefaultState());
 		}
-		return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+		return super.func_225533_a_(state, worldIn, pos, player, handIn, hit);
 	}
 }

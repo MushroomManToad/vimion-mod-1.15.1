@@ -4,7 +4,6 @@ import mushroommantoad.mmpmod.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
@@ -37,12 +36,6 @@ public class VimionBushBlock extends Block implements IPlantable
 	{
 		BlockPos blockpos = pos.down();
 		return this.isValidGround(worldIn.getBlockState(blockpos), worldIn, blockpos);
-	}
-
-	@Override
-	public BlockRenderLayer getRenderLayer() 
-	{
-		return BlockRenderLayer.CUTOUT;
 	}
 
 	@Override
