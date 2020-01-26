@@ -46,8 +46,6 @@ public class ClientProxy extends CommonProxy
 				double yDif = spirePos.getY() - entityPos.getY();
 				double zDif = entityPos.getZ() - spirePos.getZ();
 				
-				System.out.println(spirePos.getX() + ((xDif / 16)));
-				
 				for(double i = 0; i < 16; i++)
 				{
 					worldIn.addParticle(ParticleTypes.ENCHANTED_HIT, spirePos.getX() + ((xDif / 16) * i) + 0.5, spirePos.getY() + ((yDif / 16) * i) + 2.0 - (i * 0.05), spirePos.getZ() + ((zDif / 16) * i) + 0.5, 0, 0, 0);

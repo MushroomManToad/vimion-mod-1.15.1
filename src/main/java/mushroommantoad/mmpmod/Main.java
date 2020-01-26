@@ -57,13 +57,13 @@ public class Main {
 
 	// PreInit
 	private void setup(final FMLCommonSetupEvent event) {
-		//OreGeneration.setupOreGeneration();
+		OreGeneration.setupOreGeneration();
 		logger.info("Setup Server PreInit");
 	}
 
 	// PreInit
 	private void clientRegistries(final FMLClientSetupEvent event) {
-		//VimionRenderRegistry.registerEntityRenders();
+		VimionRenderRegistry.registerEntityRenders();
 		logger.info("Client Registries Added");
 	}
 
@@ -86,7 +86,7 @@ public class Main {
 		
 		@SubscribeEvent
 		public static void registerTileEntities(final RegistryEvent.Register<TileEntityType<?>> event)	{
-			//ModTileEntities.registerAll(event, logger);
+			ModTileEntities.registerAll(event, logger);
 		}
 		
 		@SubscribeEvent

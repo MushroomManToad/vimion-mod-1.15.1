@@ -46,10 +46,9 @@ public class SpectralChickenEntity extends CreatureEntity implements ISpectralEn
 	public float oFlap;
 	public float wingRotDelta = 1.0F;
 	
-	@SuppressWarnings("unchecked")
 	public SpectralChickenEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
-		super((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_CHICKEN, worldIn);
+		super(ModEntities.SPECTRAL_CHICKEN, worldIn);
 	}
 	
 	@Override

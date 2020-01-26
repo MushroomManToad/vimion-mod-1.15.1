@@ -106,7 +106,6 @@ public class SpectralChickenModel extends EntityModel<SpectralChickenEntity>
    public void func_225598_a_(@Nonnull MatrixStack matrix, @Nonnull IVertexBuilder vertexBuilder, int light, int overlayLight, float red, float green, float blue, float alpha)
    {
 	   float scale = 1.0f;
-	   //this.func_225597_a_(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 	   if (this.isChild) {
 	      RenderSystem.pushMatrix();
 	      RenderSystem.translatef(0.0F, 5.0F * scale, 2.0F * scale);
@@ -133,5 +132,5 @@ public class SpectralChickenModel extends EntityModel<SpectralChickenEntity>
 	      this.rightWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
 	      this.leftWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
 	   }		
-	}
+   }
 }

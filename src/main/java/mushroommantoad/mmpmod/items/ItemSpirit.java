@@ -34,7 +34,6 @@ public class ItemSpirit extends Item
 		super(properties);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) 
 	{

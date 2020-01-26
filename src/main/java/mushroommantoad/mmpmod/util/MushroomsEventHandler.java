@@ -46,7 +46,6 @@ public class MushroomsEventHandler
 							{
 								if(mobIn instanceof PhantomEntity)
 								{
-									@SuppressWarnings("unchecked")
 									ExpionicAbominationEntity vim = new ExpionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.EXPIONIC_ABOMINATION, worldIn);
 									vim.setPosition(VTranslate.getEntityX(entity), VTranslate.getEntityY(entity), VTranslate.getEntityZ(entity));
 									worldIn.addEntity(vim);
@@ -54,7 +53,6 @@ public class MushroomsEventHandler
 								}
 								else
 								{
-									@SuppressWarnings("unchecked")
 									VimionicAbominationEntity vim = new VimionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.VIMIONIC_ABOMINATION, worldIn);
 									vim.setPosition(VTranslate.getEntityX(entity), VTranslate.getEntityY(entity), VTranslate.getEntityZ(entity));
 									worldIn.addEntity(vim);

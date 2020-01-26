@@ -5,6 +5,7 @@ import java.util.List;
 import mushroommantoad.mmpmod.entities.spectral.ISpectralEntity;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
+import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -37,10 +38,9 @@ public class SpectralPigEntity extends CreatureEntity implements ISpectralEntity
 {
 	private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
 	
-	@SuppressWarnings("unchecked")
 	public SpectralPigEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
-		super((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_PIG, worldIn);
+		super(ModEntities.SPECTRAL_PIG, worldIn);
 	}
 	
 	@Override
@@ -95,7 +95,7 @@ public class SpectralPigEntity extends CreatureEntity implements ISpectralEntity
 			if(!this.world.isRemote)
 			{
 				stack.shrink(1);
-				List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(this.posX - 64, this.posY - 64, this.posZ - 64, this.posX + 64, this.posY + 64, this.posZ + 64));
+				List<LivingEntity> entities = world.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(VTranslate.getEntityX(this) - 64, VTranslate.getEntityY(this) - 64, VTranslate.getEntityZ(this) - 64, VTranslate.getEntityX(this) + 64, VTranslate.getEntityY(this) + 64, VTranslate.getEntityZ(this) + 64));
 				
 				for(LivingEntity e : entities)
 				{
@@ -117,7 +117,7 @@ public class SpectralPigEntity extends CreatureEntity implements ISpectralEntity
 	@Override
 	public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, ILivingEntityData spawnDataIn, CompoundNBT dataTag) 
 	{
-		List<LivingEntity> entities = worldIn.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(this.posX - 64, this.posY - 64, this.posZ - 64, this.posX + 64, this.posY + 64, this.posZ + 64));
+		List<LivingEntity> entities = worldIn.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(VTranslate.getEntityX(this) - 64, VTranslate.getEntityY(this) - 64, VTranslate.getEntityZ(this) - 64, VTranslate.getEntityX(this) + 64, VTranslate.getEntityY(this) + 64, VTranslate.getEntityZ(this) + 64));
 		
 		for(LivingEntity e : entities)
 		{

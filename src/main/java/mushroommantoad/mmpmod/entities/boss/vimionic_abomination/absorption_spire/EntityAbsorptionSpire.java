@@ -7,13 +7,18 @@ import javax.annotation.Nullable;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.network.SToCAbsorptionSpireParticlePacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
+import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -27,7 +32,7 @@ public class EntityAbsorptionSpire extends Entity
 	private LivingEntity caster;
 	private UUID casterUuid;
 	
-	DamageSource spireDamage = new DamageSource("absorptionSpire").setDamageIsAbsolute();
+	DamageSource spireDamage = new DamageSource("absorptionSpire").setDamageIsAbsolute().setDamageBypassesArmor();
 	
 	public EntityAbsorptionSpire(EntityType<? extends Entity> entityTypeIn, World worldIn) 
 	{
@@ -96,6 +101,20 @@ public class EntityAbsorptionSpire extends Entity
 	@Override
 	public boolean canBePushed() { return true; }
 	
+	public boolean isCreative(LivingEntity entity)
+	{
+		if(entity instanceof PlayerEntity)
+		{
+			PlayerEntity player = (PlayerEntity) entity;
+			if(player.isCreative()) return true;
+			else return false;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	@Override
 	public void tick() 
 	{
@@ -107,20 +126,19 @@ public class EntityAbsorptionSpire extends Entity
 				this.tickCooldown--;
 				if(this.tickCooldown == 0)
 				{
-					AxisAlignedBB aabb = new AxisAlignedBB(this.posX + 5, this.posY + 5, this.posZ + 5, this.posX - 5, this.posY - 5, this.posZ - 5);
+					AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 5, VTranslate.getEntityY(this) + 5, VTranslate.getEntityZ(this) + 5, VTranslate.getEntityX(this) - 5, VTranslate.getEntityY(this) - 5, VTranslate.getEntityZ(this) - 5);
 					for(LivingEntity livingentity : this.world.getEntitiesWithinAABB(LivingEntity.class, aabb)) 
 					{
-						if(livingentity != this.getCaster() && livingentity.isAlive() && !livingentity.isInvulnerable() && this.getCaster().isAlive())
+						if(livingentity != this.getCaster() && livingentity.isAlive() && !livingentity.isInvulnerable() && this.getCaster().isAlive() && !this.isCreative(livingentity))
 						{
-							livingentity.attackEntityFrom(spireDamage, 1);
-							if(this.getCaster().getHealth() < this.getCaster().getMaxHealth())
+							if(livingentity.attackEntityFrom(spireDamage, 1) && this.getCaster().getHealth() < this.getCaster().getMaxHealth())
 							{
 								this.getCaster().setHealth(this.getCaster().getHealth() + 1);
 							}
 							for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb.grow(27))) 
 							{
 								
-								VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCAbsorptionSpireParticlePacket(this.posX, this.posY, this.posZ));
+								VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCAbsorptionSpireParticlePacket(VTranslate.getEntityX(this), VTranslate.getEntityY(this), VTranslate.getEntityZ(this)));
 							}
 						}
 					}
@@ -143,6 +161,38 @@ public class EntityAbsorptionSpire extends Entity
 			}
 		}
 		super.tick();
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean attackEntityFrom(DamageSource source, float amount) 
+	{
+		System.out.println("Pop");
+		if (this.isInvulnerableTo(source)) 
+		{
+			return false;
+		} 
+		else if (source.getTrueSource() instanceof EnderDragonEntity) 
+		{
+			return false;
+		} 
+		else 
+		{
+			if (!this.removed && !this.world.isRemote) 
+			{
+				this.remove();
+				AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 15, VTranslate.getEntityY(this) + 15, VTranslate.getEntityZ(this) + 15, VTranslate.getEntityX(this) - 15, VTranslate.getEntityY(this) - 15, VTranslate.getEntityZ(this) - 15);
+				for(LivingEntity livingentity : this.world.getEntitiesWithinAABB(LivingEntity.class, aabb)) 
+				{
+					if(livingentity instanceof PlayerEntity)
+					{
+						PlayerEntity player = (PlayerEntity) livingentity;
+						world.playSound(player, this.getPosition(), SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.HOSTILE, 1, -1);
+					}
+				}
+			}
+			return true;
+		}
 	}
 
 	@Override

@@ -1,11 +1,13 @@
 package mushroommantoad.mmpmod.entities.boss.expionic_abomination;
 
+import mushroommantoad.mmpmod.entities.boss.goals.BurstTeleportGoal;
 import mushroommantoad.mmpmod.entities.boss.goals.RemoteDisarmGoal;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
 import mushroommantoad.mmpmod.network.SToCExpionicTeleportParticlePacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
+import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -33,8 +35,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.BossInfo;
-import net.minecraft.world.ServerBossInfo;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.PacketDistributor;
 
@@ -45,14 +47,15 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	
 	private final ServerBossInfo bossInfo = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("bossbar.vimion.expionic_abomination.name").applyTextStyle(TextFormatting.BLUE), BossInfo.Color.BLUE, BossInfo.Overlay.PROGRESS)).setCreateFog(true);
 	
-	private int tpCooldown = 200;
-	private int disarmCooldown = 400;
+	private int tpCooldown = 150;
+	private int disarmCooldown = 307;
 	private int levitateCooldown = 333;
 	
-	@SuppressWarnings("unchecked")
+	DamageSource expionicTeleport = new DamageSource("expionicTeleport").setDamageIsAbsolute();
+	
 	public ExpionicAbominationEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
-		super((EntityType<? extends CreatureEntity>) ModEntities.EXPIONIC_ABOMINATION, worldIn);
+		super( ModEntities.EXPIONIC_ABOMINATION, worldIn);
 		this.experienceValue = 50;
 	}
 	
@@ -61,10 +64,11 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	{
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new RemoteDisarmGoal(this));
-	    this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 64.0F));
-	    this.goalSelector.addGoal(3, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
-	    this.goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-	    this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(2, new BurstTeleportGoal(this));
+	    this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 64.0F));
+	    this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
+	    this.goalSelector.addGoal(5, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+	    this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
 	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
@@ -118,7 +122,7 @@ public class ExpionicAbominationEntity extends CreatureEntity
 				this.tpCooldown--;
 				if(this.tpCooldown < 0)
 				{
-					this.tpCooldown = 200;
+					this.tpCooldown = 150;
 				}
 				nbt.putInt("tpCooldown", this.tpCooldown);
 			}
@@ -132,7 +136,7 @@ public class ExpionicAbominationEntity extends CreatureEntity
 				this.disarmCooldown--;
 				if(this.disarmCooldown < 0)
 				{
-					this.disarmCooldown = 400;
+					this.disarmCooldown = 307;
 				}
 				nbt.putInt("disarmCooldown", this.disarmCooldown);
 			}
@@ -165,17 +169,23 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	      } else if (!(source instanceof IndirectEntityDamageSource) && source != DamageSource.FIREWORKS) {
 	         boolean flag = super.attackEntityFrom(source, amount);
 	         if (source.isUnblockable() && this.rand.nextInt(10) != 0) {
-	            this.attemptRandomTP(64);
+	            this.attemptRandomTP(16);
 	         }
-
+	         
+	         if(Math.random() > 0.66) 
+	         {
+	        	 if(this.attemptRandomTP(16))
+	        	 {
+	        		 if(source.getImmediateSource() instanceof PlayerEntity)
+	        			 source.getImmediateSource().attackEntityFrom(expionicTeleport, 5); 
+	        	 }
+	         }
+	         
 	         return flag;
 	      } else {
-	         for(int i = 0; i < 64; ++i) {
-	            if (this.attemptRandomTP(64)) {
+	            if (this.attemptRandomTP(16)) {
 	               return true;
 	            }
-	         }
-
 	         return false;
 	      }
 	   }
@@ -192,16 +202,16 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	
 	public boolean teleportRandomly(double distance) 
 	{
-		double d0 = this.posX + (this.rand.nextDouble() - 0.5D) * distance;
-		double d1 = this.posY + (double)(this.rand.nextInt((int)distance) - (distance / 2));
-		double d2 = this.posZ + (this.rand.nextDouble() - 0.5D) * distance;
+		double d0 = VTranslate.getEntityX(this) + (this.rand.nextDouble() - 0.5D) * distance;
+		double d1 = VTranslate.getEntityY(this);
+		double d2 = VTranslate.getEntityZ(this) + (this.rand.nextDouble() - 0.5D) * distance;
 		return this.teleportTo(d0, d1, d2);
 	}
 
 	public boolean teleportTo(double x, double y, double z) 
 	{
-		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(x, y, z);
-		while(pos.getY() > 0 && !this.world.getBlockState(pos).getMaterial().blocksMovement()) 
+		BlockPos.Mutable pos = new BlockPos.Mutable(x, y + 8, z);
+		while(pos.getY() > y - 8 && !this.world.getBlockState(pos).getMaterial().blocksMovement()) 
 		{
 			pos.move(Direction.DOWN);
 		}
@@ -211,11 +221,11 @@ public class ExpionicAbominationEntity extends CreatureEntity
 		} 
 		else 
 		{
-			double[] coords = {this.posX, this.posY, this.posZ};
-			boolean flag = this.attemptTeleport(pos.getX(), pos.getY(), pos.getZ(), false);
+			double[] coords = {VTranslate.getEntityX(this), VTranslate.getEntityY(this), VTranslate.getEntityZ(this)};
+			boolean flag = this.attemptTeleport(pos.getX(), pos.getY() + 1, pos.getZ(), false);
 			if (flag) 
 			{
-				AxisAlignedBB aabb = new AxisAlignedBB(this.posX + 32, this.posY + 32, this.posZ + 32, this.posX - 32, this.posY - 32, this.posZ - 32);
+				AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 32, VTranslate.getEntityY(this) + 32, VTranslate.getEntityZ(this) + 32, VTranslate.getEntityX(this) - 32, VTranslate.getEntityY(this) - 32, VTranslate.getEntityZ(this) - 32);
 				for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb)) 
 				{
 					VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCExpionicTeleportParticlePacket(coords[0], coords[1], coords[2], 0));
@@ -250,9 +260,21 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	{
 		super.dropSpecialItems(source, looting, recentlyHitIn);
 		ItemEntity itementity = this.entityDropItem(ModItems.expioplasm);
-		if (itementity != null) 
+		if (itementity != null) {itementity.setNoDespawn(); }
+		if(Math.random() > 0.75)
 		{
-			itementity.setNoDespawn();
+			ItemEntity itementity1 = this.entityDropItem(ModItems.expioplasm);
+			if (itementity1 != null) {itementity1.setNoDespawn();}
+		}
+		if(Math.random() > 0.75)
+		{
+			ItemEntity itementity2 = this.entityDropItem(ModItems.expioplasm);
+			if (itementity2 != null) {itementity2.setNoDespawn();}
+		}
+		if(Math.random() > 0.75)
+		{
+			ItemEntity itementity3 = this.entityDropItem(ModItems.expioplasm);
+			if (itementity3 != null) {itementity3.setNoDespawn();}
 		}
 	}
 	

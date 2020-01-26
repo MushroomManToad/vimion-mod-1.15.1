@@ -172,8 +172,8 @@ public class ItemSolarionPickaxe extends PickaxeItem
 	
 	public boolean canSeeSky(World worldIn, Entity entityIn)
 	{
-		BlockPos.Mutable pos1 = new BlockPos.Mutable(entityIn.getPosition().getX(), entityIn.getPosition().getY(), entityIn.getPosition().getZ());
-		if(!worldIn.isRemote && !worldIn.isDaytime()) return false;
+		BlockPos.Mutable pos1 = new BlockPos.Mutable(entityIn.getPosition().getX(), entityIn.getPosition().getY() + 1, entityIn.getPosition().getZ());
+		if(!worldIn.isRemote && (!worldIn.isDaytime() || worldIn.isRaining() || worldIn.isThundering())) return false;
 		for(int i = (int) entityIn.getPosition().getY(); i <= 256; i++)
 		{
 			if(!(worldIn.getBlockState(pos1).getBlock() instanceof AirBlock)) return false;
@@ -213,6 +213,7 @@ public class ItemSolarionPickaxe extends PickaxeItem
 	    	                b == Blocks.RED_SAND ||
 	    	                b == Blocks.RED_SANDSTONE ||
 	                		b == Blocks.BEDROCK ||
+	                		b == Blocks.COBBLESTONE ||
 	                		b instanceof FlowerBlock ||
 	                		b == Blocks.GRASS ||
 	                		b == Blocks.TALL_GRASS ||
@@ -229,6 +230,8 @@ public class ItemSolarionPickaxe extends PickaxeItem
 	                		b == Blocks.TALL_SEAGRASS ||
 	                		b == Blocks.NETHERRACK ||
 	                		b == Blocks.END_STONE ||
+	                		b == Blocks.TORCH ||
+	                		b == Blocks.WALL_TORCH ||
 	                		b instanceof LeavesBlock ||
 	                		b instanceof FlowingFluidBlock) {} 
 	                	else localOres.add(pooledMutableBlockPos.toImmutable());

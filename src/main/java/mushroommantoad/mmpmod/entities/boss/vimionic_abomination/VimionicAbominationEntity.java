@@ -19,25 +19,29 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.BossInfo;
-import net.minecraft.world.ServerBossInfo;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.world.BossInfo;
 
 public class VimionicAbominationEntity extends CreatureEntity 
 {
 	private final ServerBossInfo bossInfo = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("bossbar.vimion.vimionic_abomination.name").applyTextStyle(TextFormatting.GREEN), BossInfo.Color.GREEN, BossInfo.Overlay.PROGRESS)).setCreateFog(true);
+	private static final DataParameter<Boolean> SUMMONING_ENTITY = EntityDataManager.createKey(VimionicAbominationEntity.class, DataSerializers.BOOLEAN);
+	private int spireCooldown = 50;
 	
-	private int spireCooldown = 100;
-	
-	@SuppressWarnings("unchecked")
 	public VimionicAbominationEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
-		super((EntityType<? extends CreatureEntity>) ModEntities.VIMIONIC_ABOMINATION, worldIn);
+		super(ModEntities.VIMIONIC_ABOMINATION, worldIn);
 		this.experienceValue = 50;
 	}
 	
@@ -76,7 +80,7 @@ public class VimionicAbominationEntity extends CreatureEntity
 				this.spireCooldown--;
 				if(this.spireCooldown < 0)
 				{
-					this.spireCooldown = (int) this.getHealth();
+					this.spireCooldown = (int) (this.getHealth() / 2) + 1;
 				}
 				nbt.putInt("spireCooldown", this.spireCooldown);
 			}
@@ -86,6 +90,24 @@ public class VimionicAbominationEntity extends CreatureEntity
 			}
 		}
 		super.tick();
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	public boolean isSummoningEntity() 
+	{
+		return this.dataManager.get(SUMMONING_ENTITY);
+	}
+
+	public void setSummoningEntity(boolean bool) 
+	{
+		this.dataManager.set(SUMMONING_ENTITY, bool);
+	}
+	
+	@Override
+	protected void registerData() 
+	{
+		super.registerData();
+		this.dataManager.register(SUMMONING_ENTITY, false);
 	}
 	
 	@Override
@@ -110,10 +132,22 @@ public class VimionicAbominationEntity extends CreatureEntity
 	protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) 
 	{
 		super.dropSpecialItems(source, looting, recentlyHitIn);
-		ItemEntity itementity = this.entityDropItem(ModItems.vimioplasm);
-		if (itementity != null) 
+		ItemEntity itementity0 = this.entityDropItem(ModItems.vimioplasm);
+		if (itementity0 != null) {itementity0.setNoDespawn();}
+		if(Math.random() > 0.75)
 		{
-			itementity.setNoDespawn();
+			ItemEntity itementity1 = this.entityDropItem(ModItems.vimioplasm);
+			if (itementity1 != null) {itementity1.setNoDespawn();}
+		}
+		if(Math.random() > 0.75)
+		{
+			ItemEntity itementity2 = this.entityDropItem(ModItems.vimioplasm);
+			if (itementity2 != null) {itementity2.setNoDespawn();}
+		}
+		if(Math.random() > 0.75)
+		{
+			ItemEntity itementity3 = this.entityDropItem(ModItems.vimioplasm);
+			if (itementity3 != null) {itementity3.setNoDespawn();}
 		}
 	}
 	

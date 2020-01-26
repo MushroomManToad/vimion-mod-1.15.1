@@ -1,12 +1,8 @@
 package mushroommantoad.mmpmod.entities.boss.goals;
 
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationEntity;
-import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.absorption_spire.EntityAbsorptionSpire;
-import mushroommantoad.mmpmod.init.ModSoundEvents;
-import mushroommantoad.mmpmod.util.MushroomsMathUtil;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.world.World;
 
 public class TargetLevitateGoal extends Goal
 {
