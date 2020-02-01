@@ -22,14 +22,19 @@ public class VimionPacketHandler
 		.consumer(SendBookOpenPacket::handle)
 		.add();
 		
+		CHANNEL.messageBuilder(SendNoteOpenPacket.class, id++)
+		.encoder(SendNoteOpenPacket::serialize).decoder(SendNoteOpenPacket::deserialize)
+		.consumer(SendNoteOpenPacket::handle)
+		.add();
+		
 		CHANNEL.messageBuilder(SToCAbsorptionSpireParticlePacket.class, id++)
 		.encoder(SToCAbsorptionSpireParticlePacket::serialize).decoder(SToCAbsorptionSpireParticlePacket::deserialize)
 		.consumer(SToCAbsorptionSpireParticlePacket::handle)
 		.add();
 		
-		CHANNEL.messageBuilder(SToCExpionicTeleportParticlePacket.class, id++)
-		.encoder(SToCExpionicTeleportParticlePacket::serialize).decoder(SToCExpionicTeleportParticlePacket::deserialize)
-		.consumer(SToCExpionicTeleportParticlePacket::handle)
+		CHANNEL.messageBuilder(SToCParticleAtPosPacket.class, id++)
+		.encoder(SToCParticleAtPosPacket::serialize).decoder(SToCParticleAtPosPacket::deserialize)
+		.consumer(SToCParticleAtPosPacket::handle)
 		.add();
 	}
 }

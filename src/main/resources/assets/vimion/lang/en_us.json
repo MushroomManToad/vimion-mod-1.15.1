@@ -30,10 +30,12 @@
 	"item.vimion.memory_crystal": "Memory Crystal",
 	
 	"item.vimion.vimionite_dagger": "Vimionite Dagger",
+	"item.vimion.necrionite_hoe": "Necrionite Hoe",
 	"item.vimion.solarionite_pickaxe": "Solarionite Pickaxe",
 	"item.vimion.nihilionite_axe": "Nihilionite Axe",
 	"item.vimion.expionite_spade": "Expionite Spade",
 	"item.vimion.vimionic_tome": "Vimionic Tome",
+	"item.vimion.vimionic_note": "Vimion Note",
 	"item.vimion.geologic_phaser": "Geologic Phaser",
 	"item.vimion.advanced_geologic_phaser": "Advanced Geologic Phaser",
 	
@@ -85,6 +87,7 @@
 	"entity.vimion.spectral_rabbit": "Spectral Rabbit",
 	"entity.vimion.vimionic_abomination": "Vimionic Abomination",
 	"entity.vimion.expionic_abomination": "Expionic Abomination",
+	"entity.vimion.absorption_spire": "Absorption Spire",
 	
 	"bossbar.vimion.vimionic_abomination.name": "Vimionic Abomination",
 	"bossbar.vimion.necrionic_abomination.name": "Necrionic Abomination",
@@ -93,9 +96,12 @@
 	"bossbar.vimion.expionic_abomination.name": "Expionic Abomination",
 	"berries.vimion.annihilation.lore": "And you thought that that chili destroyed your guts!",
 	"vimion.vimionic.tome.lore": "The notes of a researcher, expanded as you learn more about the world of Vimion around you",
+	"vimion.vimionic.note.lore": "Right Click to open! A note from the Vimion Research Team that introduces the basics of Vimion.",
 	"vimion.memory.crystal.lore": "This should be Creative only. Resets a player's progress in the Vimionic Tome on right click",
 	
 	"death.attack.absorptionSpire": "%1$s was consumed by a Vimionic Absorption Spire",
+	"death.attack.expionicTeleport": "%1$s was imploded by the Expionic Abomination",
+	"death.attack.spriteBurst": "%1$s was somehow killed by a Spectral Sprite. Well done...",
 	
 	"itemGroup.vimion": "Vimion"
 }

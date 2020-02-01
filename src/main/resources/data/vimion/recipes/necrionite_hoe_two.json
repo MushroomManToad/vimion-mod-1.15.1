@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"nn",
+		"ns",
+		" s"
+	],
+	
+	"key":
+	{
+		"s": { "item": "minecraft:stick" },
+		"n": { "item": "vimion:necrion_gemstone"}
+	},
+	
+	"result": { "item": "vimion:necrionite_hoe" }
+}

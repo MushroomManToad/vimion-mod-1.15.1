@@ -2,10 +2,11 @@ package mushroommantoad.mmpmod.entities.boss.expionic_abomination;
 
 import mushroommantoad.mmpmod.entities.boss.goals.BurstTeleportGoal;
 import mushroommantoad.mmpmod.entities.boss.goals.RemoteDisarmGoal;
+import mushroommantoad.mmpmod.entities.boss.goals.TargetLevitateGoal;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
-import mushroommantoad.mmpmod.network.SToCExpionicTeleportParticlePacket;
+import mushroommantoad.mmpmod.network.SToCParticleAtPosPacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
 import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.CreatureEntity;
@@ -49,7 +50,7 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	
 	private int tpCooldown = 150;
 	private int disarmCooldown = 307;
-	private int levitateCooldown = 333;
+	private int levitateCooldown = 233;
 	
 	DamageSource expionicTeleport = new DamageSource("expionicTeleport").setDamageIsAbsolute();
 	
@@ -65,10 +66,11 @@ public class ExpionicAbominationEntity extends CreatureEntity
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new RemoteDisarmGoal(this));
 		this.goalSelector.addGoal(2, new BurstTeleportGoal(this));
-	    this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 64.0F));
-	    this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
-	    this.goalSelector.addGoal(5, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-	    this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+		this.goalSelector.addGoal(3, new TargetLevitateGoal(this));
+	    this.goalSelector.addGoal(4, new LookAtGoal(this, PlayerEntity.class, 64.0F));
+	    this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 0.0F));
+	    this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+	    this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
 	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
@@ -150,7 +152,7 @@ public class ExpionicAbominationEntity extends CreatureEntity
 				this.levitateCooldown--;
 				if(this.levitateCooldown < 0)
 				{
-					this.levitateCooldown = 333;
+					this.levitateCooldown = 233;
 				}
 				nbt.putInt("levitateCooldown", this.levitateCooldown);
 			}
@@ -228,7 +230,7 @@ public class ExpionicAbominationEntity extends CreatureEntity
 				AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 32, VTranslate.getEntityY(this) + 32, VTranslate.getEntityZ(this) + 32, VTranslate.getEntityX(this) - 32, VTranslate.getEntityY(this) - 32, VTranslate.getEntityZ(this) - 32);
 				for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb)) 
 				{
-					VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCExpionicTeleportParticlePacket(coords[0], coords[1], coords[2], 0));
+					VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCParticleAtPosPacket(coords[0], coords[1], coords[2], 0));
 				}
 				this.world.playSound((PlayerEntity)null, coords[0], coords[1], coords[2], ModSoundEvents.expionic_abomination_teleport, this.getSoundCategory(), 1.0F, 1.0F);
 				this.playSound(ModSoundEvents.expionic_abomination_teleport, 1.0F, 1.0F);

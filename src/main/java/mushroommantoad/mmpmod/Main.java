@@ -17,6 +17,8 @@ import mushroommantoad.mmpmod.util.MushroomsEventHandler;
 import mushroommantoad.mmpmod.util.VimionicTomeListener;
 import mushroommantoad.mmpmod.world.OreGeneration;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -62,8 +64,21 @@ public class Main {
 	}
 
 	// PreInit
+    @SuppressWarnings("unused")
 	private void clientRegistries(final FMLClientSetupEvent event) {
 		VimionRenderRegistry.registerEntityRenders();
+    	RenderType solid = RenderType.func_228639_c_();
+    	RenderType cutout = RenderType.func_228641_d_();
+        RenderType cutoutmipped = RenderType.func_228643_e_();
+		RenderType translucentmipped = RenderType.func_228645_f_();
+        RenderType translucent = RenderType.func_228647_g_();
+
+        RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_life_bush, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_death_bush, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_the_sun_bush, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_annihilation_bush, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_the_universe_bush, cutout);
+        logger.debug("Completed Misc. Renders");
 		logger.info("Client Registries Added");
 	}
 

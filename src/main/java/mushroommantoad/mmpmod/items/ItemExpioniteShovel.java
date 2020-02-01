@@ -58,17 +58,20 @@ public class ItemExpioniteShovel extends ShovelItem
 				if(nbt == null) nbt = new CompoundNBT();
 				if(nbt.contains("active"))
 				{
-					if(nbt.getBoolean("active") && state.getHarvestTool() == ToolType.SHOVEL)
+					if(nbt.getBoolean("active") && state.getHarvestTool() == ToolType.SHOVEL && state.getHarvestLevel() <= 0)
 					{
 						LootContext.Builder builder = new LootContext.Builder((ServerWorld) worldIn).withParameter(LootParameters.POSITION, pos).withParameter(LootParameters.TOOL, stack);
 						for(int i = 0; i < 63; i++)
 						{
-							for(ItemStack itemStack : state.getDrops(builder))
+							if(stack.getDamage() < stack.getMaxDamage())
 							{
-								ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
-								worldIn.addEntity(item);
+								for(ItemStack itemStack : state.getDrops(builder))
+								{
+									ItemEntity item = new ItemEntity(worldIn, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, itemStack);
+									worldIn.addEntity(item);
+								}
+								stack.attemptDamageItem(1, new Random(), null);
 							}
-							stack.attemptDamageItem(1, new Random(), null);
 						}
 					}
 				}

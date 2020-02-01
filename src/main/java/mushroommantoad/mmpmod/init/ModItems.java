@@ -8,12 +8,14 @@ import mushroommantoad.mmpmod.items.ItemEnergizedGemstone;
 import mushroommantoad.mmpmod.items.ItemExpioniteShovel;
 import mushroommantoad.mmpmod.items.ItemGeologicPhaser;
 import mushroommantoad.mmpmod.items.ItemMemoryCrystal;
+import mushroommantoad.mmpmod.items.ItemNecrioniteHoe;
 import mushroommantoad.mmpmod.items.ItemNihilionAxe;
 import mushroommantoad.mmpmod.items.ItemSolarionPickaxe;
 import mushroommantoad.mmpmod.items.ItemSpirit;
 import mushroommantoad.mmpmod.items.ItemVimionBerries;
 import mushroommantoad.mmpmod.items.ItemVimionDagger;
 import mushroommantoad.mmpmod.items.ItemVimionShard;
+import mushroommantoad.mmpmod.items.ItemVimionicNote;
 import mushroommantoad.mmpmod.items.ItemVimioniteTome;
 import mushroommantoad.mmpmod.items.util.VimionFoods;
 import mushroommantoad.mmpmod.lists.ItemTierList;
@@ -49,10 +51,12 @@ public class ModItems
 	public static Item memory_crystal;
 	
 	public static Item vimionic_tome;
+	public static Item vimionic_note;
 	public static Item geologic_phaser;
 	public static Item advanced_geologic_phaser;
 	
 	public static Item vimionite_dagger;
+	public static Item necrionite_hoe;
 	public static Item solarionite_pickaxe;
 	public static Item nihilionite_axe;
 	public static Item expionite_spade;
@@ -129,6 +133,7 @@ public class ModItems
 				memory_crystal = new ItemMemoryCrystal(new Item.Properties().group(Main.vimion)).setRegistryName(location("memory_crystal")),
 				
 				vimionic_tome = new ItemVimioniteTome(new Item.Properties().group(Main.vimion)).setRegistryName(location("vimionic_tome")),
+				vimionic_note = new ItemVimionicNote(new Item.Properties().group(Main.vimion)).setRegistryName(location("vimionic_note")),
 				geologic_phaser = new ItemGeologicPhaser(new Item.Properties().group(Main.vimion).maxDamage(250)).setRegistryName(location("geologic_phaser")),
 				advanced_geologic_phaser = new ItemAdvancedGeologicPhaser(new Item.Properties().group(Main.vimion).maxDamage(1000)).setRegistryName(location("advanced_geologic_phaser")),
 				
@@ -139,6 +144,7 @@ public class ModItems
 				chicken_spirit = new ItemSpirit(new Item.Properties().group(Main.vimion)).setRegistryName(location("chicken_spirit")),
 				
 				vimionite_dagger = new ItemVimionDagger(ItemTierList.vimionite, 0, -0.6f, new Item.Properties().group(Main.vimion)).setRegistryName(location("vimionite_dagger")),
+				necrionite_hoe = new ItemNecrioniteHoe(ItemTierList.necrionite, 0, new Item.Properties().group(Main.vimion)).setRegistryName(location("necrionite_hoe")),
 				solarionite_pickaxe = new ItemSolarionPickaxe(ItemTierList.solarionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("solarionite_pickaxe")),
 				nihilionite_axe = new ItemNihilionAxe(ItemTierList.nihilionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("nihilionite_axe")),
 				expionite_spade = new ItemExpioniteShovel(ItemTierList.expionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("expionite_spade")),

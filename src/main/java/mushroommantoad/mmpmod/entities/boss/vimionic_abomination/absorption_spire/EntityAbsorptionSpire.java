@@ -118,7 +118,7 @@ public class EntityAbsorptionSpire extends Entity
 	@Override
 	public void tick() 
 	{
-		if (this.world instanceof ServerWorld) 
+		if (this.world instanceof ServerWorld && this.getCaster() != null) 
 		{
 			CompoundNBT nbt = this.getPersistentData();
 			if(nbt.contains("TickCooldown"))
@@ -137,7 +137,6 @@ public class EntityAbsorptionSpire extends Entity
 							}
 							for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb.grow(27))) 
 							{
-								
 								VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCAbsorptionSpireParticlePacket(VTranslate.getEntityX(this), VTranslate.getEntityY(this), VTranslate.getEntityZ(this)));
 							}
 						}

@@ -1,6 +1,7 @@
 package mushroommantoad.mmpmod.entities.boss.vimionic_abomination;
 
 import mushroommantoad.mmpmod.entities.boss.goals.SummonAbsorptionSpireAtGoal;
+import mushroommantoad.mmpmod.entities.boss.goals.SummonSpectralSpriteAtGoal;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
@@ -26,18 +27,19 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.BossInfo;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraft.world.BossInfo;
 
 public class VimionicAbominationEntity extends CreatureEntity 
 {
 	private final ServerBossInfo bossInfo = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("bossbar.vimion.vimionic_abomination.name").applyTextStyle(TextFormatting.GREEN), BossInfo.Color.GREEN, BossInfo.Overlay.PROGRESS)).setCreateFog(true);
 	private static final DataParameter<Boolean> SUMMONING_ENTITY = EntityDataManager.createKey(VimionicAbominationEntity.class, DataSerializers.BOOLEAN);
 	private int spireCooldown = 50;
+	private int spriteCooldown = 100;
 	
 	public VimionicAbominationEntity(EntityType<? extends CreatureEntity> type, World worldIn) 
 	{
@@ -50,7 +52,8 @@ public class VimionicAbominationEntity extends CreatureEntity
 	{
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new SummonAbsorptionSpireAtGoal(this));
-	    this.goalSelector.addGoal(2, new LookAtGoal(this, PlayerEntity.class, 64.0F));
+		this.goalSelector.addGoal(2, new SummonSpectralSpriteAtGoal(this));
+	    this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 64.0F));
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)).setCallsForHelp());
 	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
@@ -59,6 +62,7 @@ public class VimionicAbominationEntity extends CreatureEntity
 	public void readAdditional(CompoundNBT compound) 
 	{
 		this.spireCooldown = compound.getInt("spireCooldown");
+		this.spriteCooldown = compound.getInt("spriteCooldown");
 		super.readAdditional(compound);
 	}
 
@@ -66,6 +70,7 @@ public class VimionicAbominationEntity extends CreatureEntity
 	public void writeAdditional(CompoundNBT compound) 
 	{
 		compound.putInt("spireCooldown", this.spireCooldown);
+		compound.putInt("spriteCooldown", this.spriteCooldown);
 		super.writeAdditional(compound);
 	}
 	
@@ -80,13 +85,26 @@ public class VimionicAbominationEntity extends CreatureEntity
 				this.spireCooldown--;
 				if(this.spireCooldown < 0)
 				{
-					this.spireCooldown = (int) (this.getHealth() / 2) + 1;
+					this.spireCooldown = 93;
 				}
 				nbt.putInt("spireCooldown", this.spireCooldown);
 			}
 			else
 			{
 				nbt.putInt("spireCooldown", this.spireCooldown);
+			}
+			if(nbt.contains("spriteCooldown"))
+			{
+				this.spriteCooldown--;
+				if(this.spriteCooldown < 0)
+				{
+					this.spriteCooldown = (int) (this.getHealth()) + 1;
+				}
+				nbt.putInt("spriteCooldown", this.spriteCooldown);
+			}
+			else
+			{
+				nbt.putInt("spriteCooldown", this.spriteCooldown);
 			}
 		}
 		super.tick();
@@ -213,5 +231,10 @@ public class VimionicAbominationEntity extends CreatureEntity
 	public int getSpireCooldown()
 	{
 		return this.spireCooldown;
+	}
+	
+	public int getSpriteCooldown()
+	{
+		return this.spriteCooldown;
 	}
 }
