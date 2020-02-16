@@ -3,36 +3,31 @@ package mushroommantoad.mmpmod.items;
 import java.util.Random;
 
 import mushroommantoad.mmpmod.blocks.necrion.NecrioniteSummonerBlock;
-import mushroommantoad.mmpmod.entities.spectral.chicken.SpectralChickenEntity;
-import mushroommantoad.mmpmod.entities.spectral.cow.SpectralCowEntity;
-import mushroommantoad.mmpmod.entities.spectral.pig.SpectralPigEntity;
-import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitEntity;
-import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepEntity;
-import mushroommantoad.mmpmod.init.ModEntities;
-import mushroommantoad.mmpmod.init.ModItems;
+import mushroommantoad.mmpmod.entities.spectral.soul.SpectralSoulEntity;
 import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.block.AirBlock;
-import net.minecraft.entity.CreatureEntity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class ItemSpirit extends Item
+public class ItemSoul extends Item
 {
-	public ItemSpirit(Properties properties) 
+	public ItemSoul(Properties properties) 
 	{
 		super(properties);
 	}
+	
 	
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) 
@@ -69,15 +64,9 @@ public class ItemSpirit extends Item
 			{
 				BlockPos nextPos = this.computeNextPos(worldIn, pos, rand);
 				
-				LivingEntity entity = new CowEntity(EntityType.COW, worldIn);
+				SpectralSoulEntity soul = new SpectralSoulEntity(null, worldIn);
 				
-				if(this == ModItems.chicken_spirit) entity = new SpectralChickenEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_CHICKEN, worldIn);
-				if(this == ModItems.cow_spirit) entity = new SpectralCowEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_COW, worldIn);
-				if(this == ModItems.pig_spirit) entity = new SpectralPigEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_PIG, worldIn);
-				if(this == ModItems.rabbit_spirit) entity = new SpectralRabbitEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_RABBIT, worldIn);
-				if(this == ModItems.sheep_spirit) entity = new SpectralSheepEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_SHEEP, worldIn);
-				
-				entity.getType().spawn(worldIn, context.getItem(), playerIn, nextPos, SpawnReason.TRIGGERED, false, false);
+				soul.getType().spawn(worldIn, context.getItem(), playerIn, nextPos, SpawnReason.TRIGGERED, false, false);
 				
 				context.getItem().shrink(1);
 				
@@ -107,5 +96,23 @@ public class ItemSpirit extends Item
 			testPos = pos;
 		}
 		return pos.add(0, 1, 0);
+	}
+	
+	public void updateName(ItemStack stack)
+	{
+		CompoundNBT nbt = stack.getTag();
+		if(nbt != null)
+		{
+			if(nbt.contains("entityIn"))
+			{
+				StringTextComponent entityName = new StringTextComponent(MushroomsUtil.nameFixer(nbt.getString("entityIn")));
+				entityName.appendText(" Soul");
+				stack.setDisplayName(entityName);
+			}
+			else
+			{
+				stack.setDisplayName(new TranslationTextComponent("soul.empty"));
+			}
+		}
 	}
 }

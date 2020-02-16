@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.network.SToCAbsorptionSpireParticlePacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -126,7 +125,7 @@ public class EntityAbsorptionSpire extends Entity
 				this.tickCooldown--;
 				if(this.tickCooldown == 0)
 				{
-					AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 5, VTranslate.getEntityY(this) + 5, VTranslate.getEntityZ(this) + 5, VTranslate.getEntityX(this) - 5, VTranslate.getEntityY(this) - 5, VTranslate.getEntityZ(this) - 5);
+					AxisAlignedBB aabb = new AxisAlignedBB(this.getPosX() + 5, this.getPosY() + 5, this.getPosZ() + 5, this.getPosX() - 5, this.getPosY() - 5, this.getPosZ() - 5);
 					for(LivingEntity livingentity : this.world.getEntitiesWithinAABB(LivingEntity.class, aabb)) 
 					{
 						if(livingentity != this.getCaster() && livingentity.isAlive() && !livingentity.isInvulnerable() && this.getCaster().isAlive() && !this.isCreative(livingentity))
@@ -137,7 +136,7 @@ public class EntityAbsorptionSpire extends Entity
 							}
 							for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb.grow(27))) 
 							{
-								VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCAbsorptionSpireParticlePacket(VTranslate.getEntityX(this), VTranslate.getEntityY(this), VTranslate.getEntityZ(this)));
+								VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCAbsorptionSpireParticlePacket(this.getPosX(), this.getPosY(), this.getPosZ()));
 							}
 						}
 					}
@@ -180,7 +179,7 @@ public class EntityAbsorptionSpire extends Entity
 			if (!this.removed && !this.world.isRemote) 
 			{
 				this.remove();
-				AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 15, VTranslate.getEntityY(this) + 15, VTranslate.getEntityZ(this) + 15, VTranslate.getEntityX(this) - 15, VTranslate.getEntityY(this) - 15, VTranslate.getEntityZ(this) - 15);
+				AxisAlignedBB aabb = new AxisAlignedBB(this.getPosX() + 15, this.getPosY() + 15, this.getPosZ() + 15, this.getPosX() - 15, this.getPosY() - 15, this.getPosZ() - 15);
 				for(LivingEntity livingentity : this.world.getEntitiesWithinAABB(LivingEntity.class, aabb)) 
 				{
 					if(livingentity instanceof PlayerEntity)

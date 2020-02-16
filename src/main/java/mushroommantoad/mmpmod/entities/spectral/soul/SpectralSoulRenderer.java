@@ -1,4 +1,4 @@
-package mushroommantoad.mmpmod.entities.spectral.sprite;
+package mushroommantoad.mmpmod.entities.spectral.soul;
 
 import mushroommantoad.mmpmod.init.ModEntities;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
@@ -8,21 +8,21 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class SpectralSpriteRenderer extends MobRenderer<SpectralSpriteEntity, SpectralSpriteModel>
+public class SpectralSoulRenderer extends MobRenderer<SpectralSoulEntity, SpectralSoulModel>
 {
-	public SpectralSpriteRenderer(EntityRendererManager manager) 
+	public SpectralSoulRenderer(EntityRendererManager manager) 
 	{
-		super(manager, new SpectralSpriteModel(), 0f);
+		super(manager, new SpectralSoulModel(), 0f);
 	}
 
 	@Override
-	public ResourceLocation getEntityTexture(SpectralSpriteEntity entity) 
+	public ResourceLocation getEntityTexture(SpectralSoulEntity entity) 
 	{
 		return ModEntities.location("textures/entity/spectral/sprite.png");
 	}
 	
 	@Override
-	protected boolean isVisible(SpectralSpriteEntity entity) 
+	protected boolean isVisible(SpectralSoulEntity entity) 
 	{
 		return false;
 	}

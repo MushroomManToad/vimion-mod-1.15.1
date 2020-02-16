@@ -34,6 +34,9 @@
 	"item.vimion.solarionite_pickaxe": "Solarionite Pickaxe",
 	"item.vimion.nihilionite_axe": "Nihilionite Axe",
 	"item.vimion.expionite_spade": "Expionite Spade",
+	
+	"item.vimion.soul_harvester": "Soul Harvester",
+	
 	"item.vimion.vimionic_tome": "Vimionic Tome",
 	"item.vimion.vimionic_note": "Vimion Note",
 	"item.vimion.geologic_phaser": "Geologic Phaser",
@@ -44,6 +47,7 @@
 	"item.vimion.pig_spirit": "Pig Spirit",
 	"item.vimion.rabbit_spirit": "Rabbit Spirit",
 	"item.vimion.chicken_spirit": "Chicken Spirit",
+	"item.vimion.soul": "Hollow Soul",
 	
 	"item.vimion.berries_of_life": "Berries of Life",
 	"item.vimion.berries_of_death": "Berries of Death",

@@ -7,9 +7,10 @@ public class VTIDHandler
 	public static int OBJECTIVE_CRAFT_VIMIONIC_DAGGER = 2;
 	public static int OBJECTIVE_OBTAIN_MOB_SPIRIT = 3;
 	public static int CHALLENGE_OBTAIN_ALL_MOB_SPIRITS = 4;
+	public static int OBJECTIVE_HARVEST_A_BERRY = 5;
 	
 	public static int OBJECTIVE_NECRION_GEMSTONE = 100;
-	public static int OBJECTIVE_CRAFT_NECRIONITE_SCYTHE = 101;
+	public static int OBJECTIVE_CRAFT_NECRIONITE_HOE = 101;
 	public static int OBJECTIVE_CRAFT_NECRIONITE_SUMMONER = 102;
 	public static int OBJECTIVE_RESURRECT_A_FARM_ANIMAL = 103;
 	

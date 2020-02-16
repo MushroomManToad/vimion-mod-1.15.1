@@ -11,7 +11,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 @OnlyIn(Dist.CLIENT)
 public class ExptionicAbominationEyesLayer<T extends Entity> extends AbstractEyesLayer<T, ExpionicAbominationModel<T>> 
 {
-	private static final RenderType TEXTURE = RenderType.func_228652_i_(ModEntities.location("textures/entity/boss/expionic_abomination_eyes.png"));
+	private static final RenderType TEXTURE = RenderType.getEyes(ModEntities.location("textures/entity/boss/expionic_abomination_eyes.png"));
 	
 	public ExptionicAbominationEyesLayer(IEntityRenderer<T, ExpionicAbominationModel<T>> p_i50928_1_) 
 	{
@@ -42,7 +42,7 @@ public class ExptionicAbominationEyesLayer<T extends Entity> extends AbstractEye
 	*/
 
 	@Override
-	public RenderType func_225636_a_() {
+	public RenderType getRenderType() {
 		return TEXTURE;
 	}
 }

@@ -4,7 +4,6 @@ import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbomina
 import mushroommantoad.mmpmod.entities.spectral.sprite.SpectralSpriteEntity;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.world.World;
@@ -53,8 +52,8 @@ public class SummonSpectralSpriteAtGoal extends Goal
 				SpectralSpriteEntity sprite1 = new SpectralSpriteEntity(ModEntities.SPECTRAL_SPRITE, worldIn);
 				SpectralSpriteEntity sprite2 = new SpectralSpriteEntity(ModEntities.SPECTRAL_SPRITE, worldIn);
 				LivingEntity entity = summoner.getAttackTarget();
-				sprite1.setPosition(VTranslate.getEntityX(entity) + 2, VTranslate.getEntityY(entity) + 4.0, VTranslate.getEntityZ(entity));
-				sprite1.setPosition(VTranslate.getEntityX(entity) - 2, VTranslate.getEntityY(entity) + 4.0, VTranslate.getEntityZ(entity));
+				sprite1.setPosition(entity.getPosX() + 2, entity.getPosY() + 4.0, entity.getPosZ());
+				sprite1.setPosition(entity.getPosX() - 2, entity.getPosY() + 4.0, entity.getPosZ());
 				worldIn.addEntity(sprite1);
 				worldIn.addEntity(sprite2);
 				summoner.playSound(ModSoundEvents.absorption_pillar_summon, 1, 0);

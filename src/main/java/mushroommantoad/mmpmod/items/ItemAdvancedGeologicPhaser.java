@@ -3,7 +3,7 @@ package mushroommantoad.mmpmod.items;
 import java.util.Random;
 
 import mushroommantoad.mmpmod.init.ModBlocks;
-import mushroommantoad.mmpmod.util.MushroomsMathUtil;
+import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.Item;
@@ -36,9 +36,9 @@ public class ItemAdvancedGeologicPhaser extends Item
 			{
 				for(int i = 0; i < 100; i++)
 				{
-					double d2 = Math.random() * MushroomsMathUtil.StaticMinusPlus();
-					double d3 = Math.random() * MushroomsMathUtil.StaticMinusPlus();
-					double d4 = Math.random() * MushroomsMathUtil.StaticMinusPlus();
+					double d2 = Math.random() * MushroomsUtil.StaticMinusPlus();
+					double d3 = Math.random() * MushroomsUtil.StaticMinusPlus();
+					double d4 = Math.random() * MushroomsUtil.StaticMinusPlus();
 					w.addParticle(ParticleTypes.ENCHANTED_HIT, (p.getX() + 0.5), (p.getY() + 0.5), (p.getZ() + 0.5), d2, d3, d4);
 				}
 				w.playSound(context.getPlayer(), p, SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.BLOCKS, 1, -1);

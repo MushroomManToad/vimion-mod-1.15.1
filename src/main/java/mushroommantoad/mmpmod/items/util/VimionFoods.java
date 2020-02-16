@@ -4,6 +4,7 @@ import net.minecraft.item.Food;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 
+@SuppressWarnings("deprecation")
 public class VimionFoods 
 {
 	public static final Food VIMION_BERRY = (new Food.Builder()).hunger(2).saturation(3.0F).build();

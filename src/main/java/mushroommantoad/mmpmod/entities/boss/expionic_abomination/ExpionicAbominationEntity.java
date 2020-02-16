@@ -8,7 +8,6 @@ import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
 import mushroommantoad.mmpmod.network.SToCParticleAtPosPacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -204,9 +203,9 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	
 	public boolean teleportRandomly(double distance) 
 	{
-		double d0 = VTranslate.getEntityX(this) + (this.rand.nextDouble() - 0.5D) * distance;
-		double d1 = VTranslate.getEntityY(this);
-		double d2 = VTranslate.getEntityZ(this) + (this.rand.nextDouble() - 0.5D) * distance;
+		double d0 = this.getPosX() + (this.rand.nextDouble() - 0.5D) * distance;
+		double d1 = this.getPosY();
+		double d2 = this.getPosZ() + (this.rand.nextDouble() - 0.5D) * distance;
 		return this.teleportTo(d0, d1, d2);
 	}
 
@@ -223,11 +222,11 @@ public class ExpionicAbominationEntity extends CreatureEntity
 		} 
 		else 
 		{
-			double[] coords = {VTranslate.getEntityX(this), VTranslate.getEntityY(this), VTranslate.getEntityZ(this)};
+			double[] coords = {this.getPosX(), this.getPosY(), this.getPosZ()};
 			boolean flag = this.attemptTeleport(pos.getX(), pos.getY() + 1, pos.getZ(), false);
 			if (flag) 
 			{
-				AxisAlignedBB aabb = new AxisAlignedBB(VTranslate.getEntityX(this) + 32, VTranslate.getEntityY(this) + 32, VTranslate.getEntityZ(this) + 32, VTranslate.getEntityX(this) - 32, VTranslate.getEntityY(this) - 32, VTranslate.getEntityZ(this) - 32);
+				AxisAlignedBB aabb = new AxisAlignedBB(this.getPosX() + 32, this.getPosY() + 32, this.getPosZ() + 32, this.getPosX() - 32, this.getPosY() - 32, this.getPosZ() - 32);
 				for(ServerPlayerEntity playerIn : this.world.getEntitiesWithinAABB(ServerPlayerEntity.class, aabb)) 
 				{
 					VimionPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> playerIn), new SToCParticleAtPosPacket(coords[0], coords[1], coords[2], 0));

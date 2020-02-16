@@ -22,12 +22,12 @@ public class SpectralSheepWoolLayer extends LayerRenderer<SpectralSheepEntity, S
 	}
 
 	@Override
-	public void func_225628_a_(MatrixStack p_225628_1_, IRenderTypeBuffer p_225628_2_, int p_225628_3_, SpectralSheepEntity entityIn, float p_225628_5_, float p_225628_6_, float p_225628_7_, float p_225628_8_, float p_225628_9_, float p_225628_10_) 
+	public void render(MatrixStack p_225628_1_, IRenderTypeBuffer p_225628_2_, int p_225628_3_, SpectralSheepEntity entityIn, float p_225628_5_, float p_225628_6_, float p_225628_7_, float p_225628_8_, float p_225628_9_, float p_225628_10_) 
 	{
 		if (!entityIn.isInvisible()) 
 		{
-			this.getEntityModel().setModelAttributes(this.sheepModel);
-			func_229140_a_(this.getEntityModel(), this.sheepModel, TEXTURE, p_225628_1_, p_225628_2_, p_225628_3_, entityIn, p_225628_5_, p_225628_6_, p_225628_8_, p_225628_9_, p_225628_10_, 0, 1, 1, 1);
+			//this.getEntityModel().setModelAttributes(this.sheepModel);
+			renderCopyCutoutModel(this.getEntityModel(), this.sheepModel, TEXTURE, p_225628_1_, p_225628_2_, p_225628_3_, entityIn, p_225628_5_, p_225628_6_, p_225628_8_, p_225628_9_, p_225628_10_, 0, 1, 1, 1);
 		}		
 	}
 }

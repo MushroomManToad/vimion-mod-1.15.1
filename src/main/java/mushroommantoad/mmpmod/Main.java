@@ -67,11 +67,11 @@ public class Main {
     @SuppressWarnings("unused")
 	private void clientRegistries(final FMLClientSetupEvent event) {
 		VimionRenderRegistry.registerEntityRenders();
-    	RenderType solid = RenderType.func_228639_c_();
-    	RenderType cutout = RenderType.func_228641_d_();
-        RenderType cutoutmipped = RenderType.func_228643_e_();
-		RenderType translucentmipped = RenderType.func_228645_f_();
-        RenderType translucent = RenderType.func_228647_g_();
+    	RenderType solid = RenderType.getSolid();
+    	RenderType cutout = RenderType.getCutout();
+        RenderType cutoutmipped = RenderType.getCutoutMipped();
+		RenderType translucent = RenderType.getTranslucent();
+        RenderType translucentmipped = RenderType.getTranslucentNoCrumbling();
 
         RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_life_bush, cutout);
         RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_death_bush, cutout);

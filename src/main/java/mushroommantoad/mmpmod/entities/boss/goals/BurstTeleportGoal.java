@@ -1,7 +1,6 @@
 package mushroommantoad.mmpmod.entities.boss.goals;
 
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationEntity;
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.DamageSource;
@@ -37,7 +36,7 @@ public class BurstTeleportGoal extends Goal
 			if(this.summoner.getTPCooldown() == 11)
 			{
 				LivingEntity entity = this.summoner.getAttackTarget();
-				if(summoner.teleportTo(VTranslate.getEntityX(entity), VTranslate.getEntityY(entity), VTranslate.getEntityZ(entity)))
+				if(summoner.teleportTo(entity.getPosX(), entity.getPosY(), entity.getPosZ()))
 				{
 					entity.attackEntityFrom(expionicTeleport, 7);
 				}

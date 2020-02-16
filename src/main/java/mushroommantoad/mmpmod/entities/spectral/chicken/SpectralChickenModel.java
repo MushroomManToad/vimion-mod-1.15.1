@@ -26,28 +26,28 @@ public class SpectralChickenModel extends EntityModel<SpectralChickenEntity>
 
    public SpectralChickenModel() {
       this.head = new ModelRenderer(this, 0, 0);
-      this.head.func_228301_a_(-2.0F, -6.0F, -2.0F, 4, 6, 3, 0.0F);
+      this.head.addBox(-2.0F, -6.0F, -2.0F, 4, 6, 3, 0.0F);
       this.head.setRotationPoint(0.0F, 15.0F, -4.0F);
       this.field_78137_g = new ModelRenderer(this, 14, 0);
-      this.field_78137_g.func_228301_a_(-2.0F, -4.0F, -4.0F, 4, 2, 2, 0.0F);
+      this.field_78137_g.addBox(-2.0F, -4.0F, -4.0F, 4, 2, 2, 0.0F);
       this.field_78137_g.setRotationPoint(0.0F, 15.0F, -4.0F);
       this.field_78143_h = new ModelRenderer(this, 14, 4);
-      this.field_78143_h.func_228301_a_(-1.0F, -2.0F, -3.0F, 2, 2, 2, 0.0F);
+      this.field_78143_h.addBox(-1.0F, -2.0F, -3.0F, 2, 2, 2, 0.0F);
       this.field_78143_h.setRotationPoint(0.0F, 15.0F, -4.0F);
       this.bill = new ModelRenderer(this, 0, 9);
-      this.bill.func_228301_a_(-3.0F, -4.0F, -3.0F, 6, 8, 6, 0.0F);
+      this.bill.addBox(-3.0F, -4.0F, -3.0F, 6, 8, 6, 0.0F);
       this.bill.setRotationPoint(0.0F, 16.0F, 0.0F);
       this.chin = new ModelRenderer(this, 26, 0);
-      this.chin.func_228300_a_(-1.0F, 0.0F, -3.0F, 3, 5, 3);
+      this.chin.addBox(-1.0F, 0.0F, -3.0F, 3, 5, 3);
       this.chin.setRotationPoint(-2.0F, 19.0F, 1.0F);
       this.body = new ModelRenderer(this, 26, 0);
-      this.body.func_228300_a_(-1.0F, 0.0F, -3.0F, 3, 5, 3);
+      this.body.addBox(-1.0F, 0.0F, -3.0F, 3, 5, 3);
       this.body.setRotationPoint(1.0F, 19.0F, 1.0F);
       this.rightWing = new ModelRenderer(this, 24, 13);
-      this.rightWing.func_228300_a_(0.0F, 0.0F, -3.0F, 1, 4, 6);
+      this.rightWing.addBox(0.0F, 0.0F, -3.0F, 1, 4, 6);
       this.rightWing.setRotationPoint(-4.0F, 13.0F, 0.0F);
       this.leftWing = new ModelRenderer(this, 24, 13);
-      this.leftWing.func_228300_a_(-1.0F, 0.0F, -3.0F, 1, 4, 6);
+      this.leftWing.addBox(-1.0F, 0.0F, -3.0F, 1, 4, 6);
       this.leftWing.setRotationPoint(4.0F, 13.0F, 0.0F);
    }
 
@@ -87,7 +87,7 @@ public class SpectralChickenModel extends EntityModel<SpectralChickenEntity>
 
    // setRotationAngles
    @Override
-   public void func_225597_a_(SpectralChickenEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+   public void setRotationAngles(SpectralChickenEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
       this.head.rotateAngleX = headPitch * ((float)Math.PI / 180F);
       this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
       this.field_78137_g.rotateAngleX = this.head.rotateAngleX;
@@ -103,34 +103,34 @@ public class SpectralChickenModel extends EntityModel<SpectralChickenEntity>
 
    // Render ??
    @Override
-   public void func_225598_a_(@Nonnull MatrixStack matrix, @Nonnull IVertexBuilder vertexBuilder, int light, int overlayLight, float red, float green, float blue, float alpha)
+   public void render(@Nonnull MatrixStack matrix, @Nonnull IVertexBuilder vertexBuilder, int light, int overlayLight, float red, float green, float blue, float alpha)
    {
 	   float scale = 1.0f;
 	   if (this.isChild) {
 	      RenderSystem.pushMatrix();
 	      RenderSystem.translatef(0.0F, 5.0F * scale, 2.0F * scale);
-	      this.head.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.field_78137_g.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.field_78143_h.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.head.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.field_78137_g.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.field_78143_h.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
 	      RenderSystem.popMatrix();
 	      RenderSystem.pushMatrix();
 	      RenderSystem.scalef(0.5F, 0.5F, 0.5F);
 	      RenderSystem.translatef(0.0F, 24.0F * scale, 0.0F);
-	      this.bill.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.chin.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.body.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.rightWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.leftWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.bill.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.chin.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.body.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.rightWing.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.leftWing.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
 	      RenderSystem.popMatrix();
 	   } else {
-	      this.head.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.field_78137_g.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.field_78143_h.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.bill.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.chin.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.body.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.rightWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
-	      this.leftWing.func_228309_a_(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.head.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.field_78137_g.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.field_78143_h.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.bill.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.chin.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.body.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.rightWing.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
+	      this.leftWing.render(matrix, vertexBuilder, light, overlayLight, red, green, blue, alpha);
 	   }		
    }
 }

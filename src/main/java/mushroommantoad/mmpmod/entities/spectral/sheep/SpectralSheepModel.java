@@ -13,11 +13,11 @@ public class SpectralSheepModel extends QuadrupedModel<SpectralSheepEntity>
 	   public SpectralSheepModel() {
 		      super(12, 0.0F, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
 		      this.headModel = new ModelRenderer(this, 0, 0);
-		      this.headModel.func_228301_a_(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F);
+		      this.headModel.addBox(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F, 0.0F);
 		      this.headModel.setRotationPoint(0.0F, 6.0F, -8.0F);
-		      this.field_78148_b = new ModelRenderer(this, 28, 8);
-		      this.field_78148_b.func_228301_a_(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, 0.0F);
-		      this.field_78148_b.setRotationPoint(0.0F, 5.0F, 2.0F);
+		      this.body = new ModelRenderer(this, 28, 8);
+		      this.body.addBox(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, 0.0F);
+		      this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
 		   }
 
 		   public void setLivingAnimations(SpectralSheepEntity entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
@@ -26,8 +26,8 @@ public class SpectralSheepModel extends QuadrupedModel<SpectralSheepEntity>
 		      this.headRotationAngleX = entityIn.getHeadRotationAngleX(partialTick);
 		   }
 
-		   public void func_225597_a_(SpectralSheepEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_) {
-		      super.func_225597_a_(p_225597_1_, p_225597_2_, p_225597_3_, p_225597_4_, p_225597_5_, p_225597_6_);
+		   public void setRotationAngles(SpectralSheepEntity p_225597_1_, float p_225597_2_, float p_225597_3_, float p_225597_4_, float p_225597_5_, float p_225597_6_) {
+		      super.setRotationAngles(p_225597_1_, p_225597_2_, p_225597_3_, p_225597_4_, p_225597_5_, p_225597_6_);
 		      this.headModel.rotateAngleX = this.headRotationAngleX;
 		   }
 }

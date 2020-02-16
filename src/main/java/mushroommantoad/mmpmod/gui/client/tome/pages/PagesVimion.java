@@ -9,6 +9,7 @@ import mushroommantoad.mmpmod.gui.client.tome.GuiTomePage;
 import mushroommantoad.mmpmod.util.VTIDHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -21,6 +22,7 @@ public class PagesVimion
 	private static ResourceLocation VIMIONITE_DAGGER = new ResourceLocation(Main.modid + ":textures/item/vimionite_dagger.png");
 	private static ResourceLocation ADVANCED_PHASER = new ResourceLocation(Main.modid + ":textures/gui/icon/advanced_geologic_phaser.png");
 	private static ResourceLocation VIMION_SPIRIT = new ResourceLocation(Main.modid + ":textures/gui/icon/vimion_spirit.png");
+	private static ResourceLocation VIMION_BERRIES = new ResourceLocation(Main.modid + ":textures/item/berries_of_life.png");
 	
 	// TODO
 	public static GuiTomePage getPage(GuiTome tome, int id)
@@ -41,6 +43,7 @@ public class PagesVimion
 		if(tome.getProgress()[VTIDHandler.OBJECTIVE_VIMION_GEMSTONE] == 1) ho.add(new GuiTomeHoverObject(tome, 70, tome.ySize / 2 + 14, ADVANCED_PHASER, "Advanced Phasing", PagesDisplayText.HOVER_ADVANCED_GEOLOGIC_PHASER, tome.getProgress()[VTIDHandler.OBJECTIVE_CRAFT_ADVANCED_GEOLOGIC_PHASER] == 1, PagesDisplayText.GREY_ADVANCED_GEOLOGIC_PHASER, PagesDisplayText.GOLD_ADVANCED_GEOLOGIC_PHASER));
 		if(tome.getProgress()[VTIDHandler.OBJECTIVE_VIMION_GEMSTONE] == 1) ho.add(new GuiTomeHoverObject(tome, 70, tome.ySize / 2 - 42, VIMIONITE_DAGGER, "Spirits?", PagesDisplayText.HOVER_SPIRITS_QUESTION, tome.getProgress()[VTIDHandler.OBJECTIVE_CRAFT_VIMIONIC_DAGGER] == 1, PagesDisplayText.GREY_SPIRITS_QUESTION, PagesDisplayText.GOLD_SPIRITS_QUESTION));
 		if(tome.getProgress()[VTIDHandler.OBJECTIVE_CRAFT_VIMIONIC_DAGGER] == 1) ho.add(new GuiTomeHoverObject(tome, 138, tome.ySize / 2 - 42 - 4, VIMION_SPIRIT, "Spirits!", PagesDisplayText.HOVER_OBTAIN_MOB_SPIRIT, tome.getProgress()[VTIDHandler.OBJECTIVE_OBTAIN_MOB_SPIRIT] == 1, PagesDisplayText.GREY_OBTAIN_MOB_SPIRIT, PagesDisplayText.GOLD_OBTAIN_MOB_SPIRIT));
+		if(tome.getProgress()[VTIDHandler.OBJECTIVE_CRAFT_ADVANCED_GEOLOGIC_PHASER] == 1) ho.add(new GuiTomeHoverObject(tome, 138, tome.ySize / 2 + 14, VIMION_BERRIES, "Grass and Berries", PagesDisplayText.HOVER_HARVEST_BERRY, tome.getProgress()[VTIDHandler.OBJECTIVE_HARVEST_A_BERRY] == 1, PagesDisplayText.GREY_HARVEST_BERRY, PagesDisplayText.GOLD_HARVEST_BERRY));
 		
 		return new GuiTomePage(tome, ho);
 	}

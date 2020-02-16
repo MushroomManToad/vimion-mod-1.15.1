@@ -10,7 +10,7 @@ public class PagesDisplayText
 	// VIMION
 	//
 	
-	public static String HOVER_VIMIONIC_TOME = "Click me for an introduction to navigating the Vimionic Tome";
+	public static String HOVER_VIMIONIC_TOME = "Click here for an introduction to navigating the Vimionic Tome";
 	public static String GREY_VIMIONIC_TOME = "Well, something broke. You shouldn't be able to see this text. Please report whatever you just did on the issue tracker on Curseforge!";
 	public static String GOLD_VIMIONIC_TOME = "The Vimionic Tome can be used to view information about and progress towards various aspects of the Vimion Mod.";
 	
@@ -30,6 +30,9 @@ public class PagesDisplayText
 	public static String GREY_OBTAIN_MOB_SPIRIT = "So far, tests have only shown the Vimionite Dagger to be capable of harvesting the spirits of Chickens, Cows, Pigs, Rabbits, and Sheep. However, this harvesting is not guaranteed, and multiple animals of a species may have to be killed with the Vimionite Dagger before a spirit is obtained.";
 	public static String GOLD_OBTAIN_MOB_SPIRIT = "These Mob Spirits are fascinating objects! It seems that at the exact moment an animal's spirit separates from its body, there’s a small chance that a piece of the fragile Vimionite Dagger will break off and bind to it. From then on, the spirit treats the Vimionite fragment as if it were its body." + "\n\n" + "This opens up several questions about both the structure and nature of life, but I’ll leave those to the philosophers. For now, I, like most of the team, just want to know what these Spirits can be used for!";
 	
+	public static String HOVER_HARVEST_BERRY = "Harvest any of the new Vimionic Berries";
+	public static String GREY_HARVEST_BERRY = "";
+	public static String GOLD_HARVEST_BERRY = "";
 	//
 	// NECRION
 	//

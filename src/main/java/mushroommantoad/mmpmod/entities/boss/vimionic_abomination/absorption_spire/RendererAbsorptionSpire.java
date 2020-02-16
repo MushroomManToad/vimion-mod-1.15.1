@@ -31,20 +31,20 @@ public class RendererAbsorptionSpire extends EntityRenderer<EntityAbsorptionSpir
 	}
 
 	// New doRender ??
-	public void func_225623_a_(EntityAbsorptionSpire entity, float p_225623_2_, float p_225623_3_, MatrixStack p_225623_4_, IRenderTypeBuffer p_225623_5_, int p_225623_6_)
+	public void render(EntityAbsorptionSpire entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn)
 	{
 	    RenderSystem.pushMatrix();
 	    RenderSystem.disableCull();
 	    RenderSystem.enableAlphaTest();
-	    IVertexBuilder ivertexbuilder = p_225623_5_.getBuffer(this.model.func_228282_a_(this.getEntityTexture(entity)));
+	    IVertexBuilder ivertexbuilder = bufferIn.getBuffer(this.model.getRenderType(this.getEntityTexture(entityIn)));
 	    RenderSystem.translatef(0.0F, 1F, 0.0F);
 	    float scaleFactor = 2.0f;
 	    RenderSystem.scalef(scaleFactor, scaleFactor, scaleFactor);
-	    this.model.func_225597_a_(entity, p_225623_3_, 0.0F, entity.ticksExisted, 0.0F, 0.0F);
-	    this.model.func_225598_a_(p_225623_4_, ivertexbuilder, p_225623_6_, OverlayTexture.field_229196_a_, 1.0F, 1.0F, 1.0F, 1.0F);
+	    this.model.setRotationAngles(entityIn, partialTicks, 0.0F, entityIn.ticksExisted, 0.0F, 0.0F);
+	    this.model.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 	    RenderSystem.popMatrix();
 	    RenderSystem.enableCull();
-		super.func_225623_a_(entity, p_225623_2_, p_225623_3_, p_225623_4_, p_225623_5_, p_225623_6_);
+		super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 	}
 	
 	public static class RenderFactory implements IRenderFactory<EntityAbsorptionSpire>

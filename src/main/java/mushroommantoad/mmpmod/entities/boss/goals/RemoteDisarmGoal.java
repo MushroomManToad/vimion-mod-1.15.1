@@ -5,7 +5,6 @@ import java.util.Random;
 
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationEntity;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
@@ -66,7 +65,7 @@ public class RemoteDisarmGoal extends Goal
 				LivingEntity target = this.summoner.getAttackTarget();
 				if(!target.getActivePotionEffects().isEmpty() ||this.summoner.getDisarmCooldown() == 1)
 				{
-					this.summoner.world.playSound((PlayerEntity)null, VTranslate.getEntityX(target), VTranslate.getEntityY(target), VTranslate.getEntityZ(target), ModSoundEvents.expionic_abomination_teleport, SoundCategory.HOSTILE, 1.0F, -1.0F);
+					this.summoner.world.playSound((PlayerEntity)null, target.getPosX(), target.getPosY(), target.getPosZ(), ModSoundEvents.expionic_abomination_teleport, SoundCategory.HOSTILE, 1.0F, -1.0F);
 				}
 				if(target.isPotionActive(Effects.LEVITATION))
 				{

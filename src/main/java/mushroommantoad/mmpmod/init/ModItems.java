@@ -11,6 +11,8 @@ import mushroommantoad.mmpmod.items.ItemMemoryCrystal;
 import mushroommantoad.mmpmod.items.ItemNecrioniteHoe;
 import mushroommantoad.mmpmod.items.ItemNihilionAxe;
 import mushroommantoad.mmpmod.items.ItemSolarionPickaxe;
+import mushroommantoad.mmpmod.items.ItemSoul;
+import mushroommantoad.mmpmod.items.ItemSoulHarvester;
 import mushroommantoad.mmpmod.items.ItemSpirit;
 import mushroommantoad.mmpmod.items.ItemVimionBerries;
 import mushroommantoad.mmpmod.items.ItemVimionDagger;
@@ -61,6 +63,8 @@ public class ModItems
 	public static Item nihilionite_axe;
 	public static Item expionite_spade;
 	
+	public static Item soul_harvester;
+	
 	public static Item vimion_block;
 	public static Item concealed_vimionite_ore;
 	public static Item vimionite_ore;
@@ -104,6 +108,8 @@ public class ModItems
 	public static Item rabbit_spirit;
 	public static Item chicken_spirit;
 	
+	public static Item soul;
+	
 	public static void registerAll(RegistryEvent.Register<Item> event, Logger logger)
 	{
 		event.getRegistry().registerAll
@@ -143,11 +149,15 @@ public class ModItems
 				rabbit_spirit = new ItemSpirit(new Item.Properties().group(Main.vimion)).setRegistryName(location("rabbit_spirit")),
 				chicken_spirit = new ItemSpirit(new Item.Properties().group(Main.vimion)).setRegistryName(location("chicken_spirit")),
 				
+				soul = new ItemSoul(new Item.Properties().group(Main.vimion)).setRegistryName(location("soul")),
+				
 				vimionite_dagger = new ItemVimionDagger(ItemTierList.vimionite, 0, -0.6f, new Item.Properties().group(Main.vimion)).setRegistryName(location("vimionite_dagger")),
 				necrionite_hoe = new ItemNecrioniteHoe(ItemTierList.necrionite, 0, new Item.Properties().group(Main.vimion)).setRegistryName(location("necrionite_hoe")),
 				solarionite_pickaxe = new ItemSolarionPickaxe(ItemTierList.solarionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("solarionite_pickaxe")),
 				nihilionite_axe = new ItemNihilionAxe(ItemTierList.nihilionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("nihilionite_axe")),
 				expionite_spade = new ItemExpioniteShovel(ItemTierList.expionite, 0, -3.4f, new Item.Properties().group(Main.vimion)).setRegistryName(location("expionite_spade")),
+				
+				soul_harvester = new ItemSoulHarvester(ItemTierList.necrionite, 0, -0.6f, new Item.Properties().group(Main.vimion)).setRegistryName(location("soul_harvester")),
 				
 				berries_of_life = new ItemVimionBerries(new Item.Properties().group(Main.vimion).food(VimionFoods.VIMION_BERRY)).setRegistryName(location("berries_of_life")),
 				berries_of_death = new ItemVimionBerries(new Item.Properties().group(Main.vimion).food(VimionFoods.NECRION_BERRY)).setRegistryName(location("berries_of_death")),

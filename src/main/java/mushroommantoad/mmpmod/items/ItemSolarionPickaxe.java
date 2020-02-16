@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
-import mushroommantoad.mmpmod.util.VTranslate;
 import net.minecraft.block.AirBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -107,9 +106,9 @@ public class ItemSolarionPickaxe extends PickaxeItem
 				if(getClosestOre(getOreBlocks(worldIn, entityIn.getPosition(), r), playerPos) != null)
 				{
 					BlockPos pos = getClosestOre(getOreBlocks(worldIn, entityIn.getPosition(), r), playerPos);
-					double x = VTranslate.getEntityX(entityIn);
-					double y = VTranslate.getEntityY(entityIn) + 1;
-					double z = VTranslate.getEntityZ(entityIn);
+					double x = entityIn.getPosX();
+					double y = entityIn.getPosY() + 1;
+					double z = entityIn.getPosZ();
 					double x2 = pos.getX() + 0.5;
 					double y2 = pos.getY() + 0.5;
 					double z2 = pos.getZ() + 0.5;

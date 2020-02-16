@@ -8,6 +8,7 @@ import mushroommantoad.mmpmod.entities.spectral.cow.SpectralCowRenderer;
 import mushroommantoad.mmpmod.entities.spectral.pig.SpectralPigRenderer;
 import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitRenderer;
 import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepRenderer;
+import mushroommantoad.mmpmod.entities.spectral.soul.SpectralSoulRenderer;
 import mushroommantoad.mmpmod.entities.spectral.sprite.SpectralSpriteRenderer;
 import mushroommantoad.mmpmod.init.ModEntities;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,6 +26,8 @@ public class VimionRenderRegistry
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_PIG, SpectralPigRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_RABBIT, SpectralRabbitRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_SPRITE, SpectralSpriteRenderer::new);
+		
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_SOUL, SpectralSoulRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.VIMIONIC_ABOMINATION, VimionicAbominationRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.EXPIONIC_ABOMINATION, ExpionicAbominationRenderer::new);

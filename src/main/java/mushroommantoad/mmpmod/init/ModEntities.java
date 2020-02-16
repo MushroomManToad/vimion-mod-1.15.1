@@ -11,6 +11,7 @@ import mushroommantoad.mmpmod.entities.spectral.cow.SpectralCowEntity;
 import mushroommantoad.mmpmod.entities.spectral.pig.SpectralPigEntity;
 import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitEntity;
 import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepEntity;
+import mushroommantoad.mmpmod.entities.spectral.soul.SpectralSoulEntity;
 import mushroommantoad.mmpmod.entities.spectral.sprite.SpectralSpriteEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -31,6 +32,7 @@ public class ModEntities
 	public static EntityType<SpectralPigEntity> SPECTRAL_PIG;
 	public static EntityType<SpectralRabbitEntity> SPECTRAL_RABBIT;
 	public static EntityType<SpectralSpriteEntity> SPECTRAL_SPRITE;
+	public static EntityType<SpectralSoulEntity> SPECTRAL_SOUL;
 	
 	public static EntityType<VimionicAbominationEntity> VIMIONIC_ABOMINATION;
 	public static EntityType<ExpionicAbominationEntity> EXPIONIC_ABOMINATION;
@@ -54,6 +56,7 @@ public class ModEntities
 			SPECTRAL_PIG = (EntityType<SpectralPigEntity>) EntityType.Builder.create(SpectralPigEntity::new, EntityClassification.CREATURE).size(0.9F, 0.9F).build(Main.modid + ":spectral_pig").setRegistryName(location("spectral_pig")),
 			SPECTRAL_RABBIT = (EntityType<SpectralRabbitEntity>) EntityType.Builder.create(SpectralRabbitEntity::new, EntityClassification.CREATURE).size(0.4F, 0.5F).build(Main.modid + ":spectral_rabbit").setRegistryName(location("spectral_rabbit")),
 			SPECTRAL_SPRITE = (EntityType<SpectralSpriteEntity>) EntityType.Builder.create(SpectralSpriteEntity::new, EntityClassification.AMBIENT).size(0.3F, 0.3F).build(Main.modid + ":spectral_sprite").setRegistryName(location("spectral_sprite")),
+			SPECTRAL_SOUL = (EntityType<SpectralSoulEntity>) EntityType.Builder.create(SpectralSoulEntity::new, EntityClassification.AMBIENT).size(0.3F, 0.3F).build(Main.modid + ":spectral_soul").setRegistryName(location("spectral_soul")),
 			VIMIONIC_ABOMINATION = (EntityType<VimionicAbominationEntity>) EntityType.Builder.create(VimionicAbominationEntity::new, EntityClassification.MONSTER).size(0.5f, 2.9f).build(Main.modid + ":vimionic_abomination").setRegistryName(location("vimionic_abomination")),
 			EXPIONIC_ABOMINATION = (EntityType<ExpionicAbominationEntity>) EntityType.Builder.create(ExpionicAbominationEntity::new, EntityClassification.MONSTER).size(0.5f, 2.1f).build(Main.modid + ":expionic_abomination").setRegistryName(location("expionic_abomination")),
 			ABSORPTION_SPIRE = (EntityType<EntityAbsorptionSpire>) EntityType.Builder.create(EntityAbsorptionSpire::new, EntityClassification.MISC).size(0.5f, 2.4f).setCustomClientFactory((spawnEntity,world) -> new EntityAbsorptionSpire(world)).setShouldReceiveVelocityUpdates(true).build(Main.modid + ":absorption_spire").setRegistryName(location("absorption_spire"))

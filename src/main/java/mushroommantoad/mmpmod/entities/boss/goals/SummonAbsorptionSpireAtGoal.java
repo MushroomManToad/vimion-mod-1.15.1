@@ -3,8 +3,7 @@ package mushroommantoad.mmpmod.entities.boss.goals;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbominationEntity;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.absorption_spire.EntityAbsorptionSpire;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
-import mushroommantoad.mmpmod.util.MushroomsMathUtil;
-import mushroommantoad.mmpmod.util.VTranslate;
+import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.world.World;
@@ -52,7 +51,7 @@ public class SummonAbsorptionSpireAtGoal extends Goal
 				World worldIn = this.summoner.world;
 				EntityAbsorptionSpire newSpire = new EntityAbsorptionSpire(worldIn, this.summoner);
 				LivingEntity entity = summoner.getAttackTarget();
-				newSpire.setPosition(VTranslate.getEntityX(entity) + Math.random() * MushroomsMathUtil.StaticMinusPlus() * 2, VTranslate.getEntityY(entity) + 0.7, VTranslate.getEntityZ(entity) + Math.random() * 2 * MushroomsMathUtil.StaticMinusPlus());
+				newSpire.setPosition(entity.getPosX() + Math.random() * MushroomsUtil.StaticMinusPlus() * 2, entity.getPosY() + 0.7, entity.getPosZ() + Math.random() * 2 * MushroomsUtil.StaticMinusPlus());
 				worldIn.addEntity(newSpire);
 				summoner.playSound(ModSoundEvents.absorption_pillar_summon, 1, 0);
 			}
