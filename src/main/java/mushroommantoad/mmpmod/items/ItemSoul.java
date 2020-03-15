@@ -4,6 +4,7 @@ import java.util.Random;
 
 import mushroommantoad.mmpmod.blocks.necrion.NecrioniteSummonerBlock;
 import mushroommantoad.mmpmod.entities.spectral.soul.SpectralSoulEntity;
+import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.block.AirBlock;
 import net.minecraft.entity.SpawnReason;
@@ -64,9 +65,18 @@ public class ItemSoul extends Item
 			{
 				BlockPos nextPos = this.computeNextPos(worldIn, pos, rand);
 				
-				SpectralSoulEntity soul = new SpectralSoulEntity(null, worldIn);
+				SpectralSoulEntity soul = new SpectralSoulEntity(ModEntities.SPECTRAL_SOUL, worldIn);
 				
 				soul.getType().spawn(worldIn, context.getItem(), playerIn, nextPos, SpawnReason.TRIGGERED, false, false);
+				
+				CompoundNBT nbt = context.getItem().getTag();
+				if(nbt != null)
+				{
+					if(nbt.contains("entityIn"))
+					{
+						soul.setRender(nbt.getString("entityIn"));
+					}
+				}
 				
 				context.getItem().shrink(1);
 				
