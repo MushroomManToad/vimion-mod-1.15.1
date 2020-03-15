@@ -41,7 +41,6 @@ public class SpectralSoulEntity extends CreatureEntity
 	public void tick() 
 	{
 		super.tick();
-		setRender("minecraft:zombie");
 	}
 	
 	public EntityModel<LivingEntity> model()
