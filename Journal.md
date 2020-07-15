@@ -1,8 +1,17 @@
 # vimion-mod-1.15.1
 1.15 Port and location for continued development of the Vimion Mod
 
+7/15/20
+The facility has now recovered from the from the incident, and our secretary is currently working on documenting the whole thing. We will attempt to make it available when the Vimionic Tome is updated with our more-recent findings.
+
+-
+
+We would like to note, for now, that we have discovered the variant of Abomination that did the majority of the damage to our facility. This is the Solarionic Abomination, which is the ascended form of Husks and Zombie Pigmen. Please note: It is *extremely* destructive, and if you want to observe it for yourself, please refrain from doing so near any structures of value (such as your bases).
+
+This Abomination seems to be attuned to the Sun in the Overworld, but other dimensions are reported to give this abomination different properties. More research is definitely needed into this phenomenon!
+
 2/1/20
-We have been dealing with an incident involving the Abominations over the past three months. We are currently focussing on rebuilding our primary facility, but once that process is complete, we will release more information on these Abominations to the public. Expect more on or near 2/15/20.
+We have been dealing with an incident involving the Abominations over the past three months. We are currently focussing on rebuilding our primary facility, but once that process is complete, we will release more information on these Abominations to the public. Expect more on or near 7/15/20.
 
 10/5/19
 
