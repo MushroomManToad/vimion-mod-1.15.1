@@ -114,15 +114,11 @@ public class SpectralSoulEntity extends CreatureEntity implements ISpectralEntit
 	@Override
 	public void registerGoals() 
 	{
-<<<<<<< HEAD
 	      this.goalSelector.addGoal(0, new SwimGoal(this));
 	      this.goalSelector.addGoal(1, new TemptGoal(this, 1.1D, TEMPTATION_ITEMS, false));
 	      this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 0.5D));
 	      this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
 	      this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
-=======
-		super.tick();
->>>>>>> b072d80f417e78e085c94466113c5195079a73bf
 	}
 	
 	@Override
