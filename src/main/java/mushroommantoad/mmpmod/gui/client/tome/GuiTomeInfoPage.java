@@ -162,7 +162,8 @@ public class GuiTomeInfoPage extends Screen
 		} 
 		else 
 		{
-			List<String> list = this.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, wrapWidth);
+			Minecraft mc = this.getMinecraft();
+			List<String> list = mc.fontRenderer.listFormattedStringToWidth(hover, wrapWidth);
 			if (list.size() < 2) 
 			{
 				return list;
@@ -171,20 +172,20 @@ public class GuiTomeInfoPage extends Screen
 			{
 				String s = list.get(0);
 				String s1 = list.get(1);
-				int i = this.getMinecraft().fontRenderer.getStringWidth(s + ' ' + s1.split(" ")[0]);
+				int i = mc.fontRenderer.getStringWidth(s + ' ' + s1.split(" ")[0]);
 				if (i - wrapWidth <= 10)
 				{
-					return this.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, i);
+					return mc.fontRenderer.listFormattedStringToWidth(hover, i);
 				} 
 				else 
 				{
 					Matcher matcher = PATTERN.matcher(s);
 					if (matcher.matches()) 
 					{
-						int j = this.getMinecraft().fontRenderer.getStringWidth(matcher.group(1));
+						int j = mc.fontRenderer.getStringWidth(matcher.group(1));
 						if (wrapWidth - j <= 10) 
 						{
-							return this.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, j);
+							return mc.fontRenderer.listFormattedStringToWidth(hover, j);
 						}
 					}
 					return list;

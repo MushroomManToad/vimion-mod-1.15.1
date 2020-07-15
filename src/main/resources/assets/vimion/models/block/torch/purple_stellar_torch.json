@@ -1,0 +1,6 @@
+{
+    "parent": "block/template_torch",
+    "textures": {
+        "torch": "vimion:block/purple_stellar_torch"
+    }
+}

@@ -165,7 +165,6 @@ public class EntityAbsorptionSpire extends Entity
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount) 
 	{
-		System.out.println("Pop");
 		if (this.isInvulnerableTo(source)) 
 		{
 			return false;

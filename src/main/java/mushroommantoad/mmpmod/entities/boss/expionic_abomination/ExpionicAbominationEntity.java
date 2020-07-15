@@ -1,13 +1,17 @@
 package mushroommantoad.mmpmod.entities.boss.expionic_abomination;
 
-import mushroommantoad.mmpmod.entities.boss.goals.BurstTeleportGoal;
-import mushroommantoad.mmpmod.entities.boss.goals.RemoteDisarmGoal;
-import mushroommantoad.mmpmod.entities.boss.goals.TargetLevitateGoal;
+import java.util.Random;
+
+import mushroommantoad.mmpmod.entities.boss.IVimionicEntity;
+import mushroommantoad.mmpmod.entities.boss.goals.expionic_abomination.BurstTeleportGoal;
+import mushroommantoad.mmpmod.entities.boss.goals.expionic_abomination.RemoteDisarmGoal;
+import mushroommantoad.mmpmod.entities.boss.goals.expionic_abomination.TargetLevitateGoal;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
 import mushroommantoad.mmpmod.network.SToCParticleAtPosPacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -22,6 +26,7 @@ import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -40,7 +45,7 @@ import net.minecraft.world.server.ServerBossInfo;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.PacketDistributor;
 
-public class ExpionicAbominationEntity extends CreatureEntity
+public class ExpionicAbominationEntity extends CreatureEntity implements IVimionicEntity
 {
 	private static final DataParameter<Boolean> IS_MOVING = EntityDataManager.createKey(ExpionicAbominationEntity.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> IS_TPCHANNELLING = EntityDataManager.createKey(ExpionicAbominationEntity.class, DataSerializers.BOOLEAN);
@@ -73,6 +78,9 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	    this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
 	    this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
 	}
+	
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState blockIn) {}
 	
 	@Override
 	public void readAdditional(CompoundNBT compound) 
@@ -260,23 +268,9 @@ public class ExpionicAbominationEntity extends CreatureEntity
 	protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) 
 	{
 		super.dropSpecialItems(source, looting, recentlyHitIn);
-		ItemEntity itementity = this.entityDropItem(ModItems.expioplasm);
-		if (itementity != null) {itementity.setNoDespawn(); }
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity1 = this.entityDropItem(ModItems.expioplasm);
-			if (itementity1 != null) {itementity1.setNoDespawn();}
-		}
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity2 = this.entityDropItem(ModItems.expioplasm);
-			if (itementity2 != null) {itementity2.setNoDespawn();}
-		}
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity3 = this.entityDropItem(ModItems.expioplasm);
-			if (itementity3 != null) {itementity3.setNoDespawn();}
-		}
+		Random random = new Random();
+		ItemEntity itementity = this.entityDropItem(new ItemStack(ModItems.expioplasm, random.nextInt(4) + 1));
+		itementity.setNoDespawn();
 	}
 	
 	@Override

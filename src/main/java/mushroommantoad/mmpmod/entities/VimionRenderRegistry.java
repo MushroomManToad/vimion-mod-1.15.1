@@ -1,6 +1,9 @@
 package mushroommantoad.mmpmod.entities;
 
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationRenderer;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.SolarionicAbominationRenderer;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.fire_blast.FireBlastRenderer;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.solar_blast.SolarBlastRenderer;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbominationRenderer;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.absorption_spire.RendererAbsorptionSpire;
 import mushroommantoad.mmpmod.entities.spectral.chicken.SpectralChickenRenderer;
@@ -30,8 +33,11 @@ public class VimionRenderRegistry
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SPECTRAL_SOUL, SpectralSoulRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.VIMIONIC_ABOMINATION, VimionicAbominationRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SOLARIONIC_ABOMINATION, SolarionicAbominationRenderer::new);
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.EXPIONIC_ABOMINATION, ExpionicAbominationRenderer::new);
 		
 		RenderingRegistry.registerEntityRenderingHandler(ModEntities.ABSORPTION_SPIRE, RendererAbsorptionSpire::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.SOLAR_BLAST, SolarBlastRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.FIRE_BLAST, FireBlastRenderer::new);
 	}
 }

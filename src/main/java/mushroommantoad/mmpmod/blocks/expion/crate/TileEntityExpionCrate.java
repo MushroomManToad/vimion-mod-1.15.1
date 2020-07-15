@@ -10,6 +10,7 @@ import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -92,7 +93,8 @@ public class TileEntityExpionCrate extends TileEntity implements ITickableTileEn
 	@Override
 	public void tick() 
 	{
-		if(!this.getWorld().isRemote)
+		World worldIn = this.getWorld();
+		if(!worldIn.isRemote)
 		{
 			if(this.getItemCount() >= 2)
 			{

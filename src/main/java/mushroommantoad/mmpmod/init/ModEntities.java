@@ -4,6 +4,9 @@ import org.apache.logging.log4j.Logger;
 
 import mushroommantoad.mmpmod.Main;
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationEntity;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.SolarionicAbominationEntity;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.fire_blast.FireBlastEntity;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.solar_blast.SolarBlastEntity;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbominationEntity;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.absorption_spire.EntityAbsorptionSpire;
 import mushroommantoad.mmpmod.entities.spectral.chicken.SpectralChickenEntity;
@@ -35,9 +38,12 @@ public class ModEntities
 	public static EntityType<SpectralSoulEntity> SPECTRAL_SOUL;
 	
 	public static EntityType<VimionicAbominationEntity> VIMIONIC_ABOMINATION;
+	public static EntityType<SolarionicAbominationEntity> SOLARIONIC_ABOMINATION;
 	public static EntityType<ExpionicAbominationEntity> EXPIONIC_ABOMINATION;
 	
 	public static EntityType<EntityAbsorptionSpire> ABSORPTION_SPIRE;
+	public static EntityType<SolarBlastEntity> SOLAR_BLAST;
+	public static EntityType<FireBlastEntity> FIRE_BLAST;
 	
 	public static Item spectral_sheep_egg;
 	public static Item spectral_cow_egg;
@@ -58,8 +64,11 @@ public class ModEntities
 			SPECTRAL_SPRITE = (EntityType<SpectralSpriteEntity>) EntityType.Builder.create(SpectralSpriteEntity::new, EntityClassification.AMBIENT).size(0.3F, 0.3F).build(Main.modid + ":spectral_sprite").setRegistryName(location("spectral_sprite")),
 			SPECTRAL_SOUL = (EntityType<SpectralSoulEntity>) EntityType.Builder.create(SpectralSoulEntity::new, EntityClassification.AMBIENT).size(0.3F, 0.3F).build(Main.modid + ":spectral_soul").setRegistryName(location("spectral_soul")),
 			VIMIONIC_ABOMINATION = (EntityType<VimionicAbominationEntity>) EntityType.Builder.create(VimionicAbominationEntity::new, EntityClassification.MONSTER).size(0.5f, 2.9f).build(Main.modid + ":vimionic_abomination").setRegistryName(location("vimionic_abomination")),
+			SOLARIONIC_ABOMINATION = (EntityType<SolarionicAbominationEntity>) EntityType.Builder.create(SolarionicAbominationEntity::new, EntityClassification.MONSTER).immuneToFire().size(0.5f, 2.3f).build(Main.modid + ":solarionic_abomination").setRegistryName(location("solarionic_abomination")),
 			EXPIONIC_ABOMINATION = (EntityType<ExpionicAbominationEntity>) EntityType.Builder.create(ExpionicAbominationEntity::new, EntityClassification.MONSTER).size(0.5f, 2.1f).build(Main.modid + ":expionic_abomination").setRegistryName(location("expionic_abomination")),
-			ABSORPTION_SPIRE = (EntityType<EntityAbsorptionSpire>) EntityType.Builder.create(EntityAbsorptionSpire::new, EntityClassification.MISC).size(0.5f, 2.4f).setCustomClientFactory((spawnEntity,world) -> new EntityAbsorptionSpire(world)).setShouldReceiveVelocityUpdates(true).build(Main.modid + ":absorption_spire").setRegistryName(location("absorption_spire"))
+			ABSORPTION_SPIRE = (EntityType<EntityAbsorptionSpire>) EntityType.Builder.create(EntityAbsorptionSpire::new, EntityClassification.MISC).size(0.5f, 2.4f).setCustomClientFactory((spawnEntity,world) -> new EntityAbsorptionSpire(world)).setShouldReceiveVelocityUpdates(true).build(Main.modid + ":absorption_spire").setRegistryName(location("absorption_spire")),
+			SOLAR_BLAST = (EntityType<SolarBlastEntity>) EntityType.Builder.create(SolarBlastEntity::new, EntityClassification.MISC).size(1.925f, 2.25f).setCustomClientFactory((spawnEntity,world) -> new SolarBlastEntity(world)).setShouldReceiveVelocityUpdates(true).build(Main.modid + ":solar_blast").setRegistryName(location("solar_blast")),
+			FIRE_BLAST = (EntityType<FireBlastEntity>) EntityType.Builder.create(FireBlastEntity::new, EntityClassification.MISC).size(0.125f, 0.125f).setCustomClientFactory((spawnEntity,world) -> new FireBlastEntity(world)).setShouldReceiveVelocityUpdates(true).build(Main.modid + ":fire_blast").setRegistryName(location("fire_blast"))
 		);
 		
 		registerEntityWorldSpawns();

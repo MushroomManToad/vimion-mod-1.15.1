@@ -3,21 +3,20 @@ package mushroommantoad.mmpmod.proxy;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbominationEntity;
 import mushroommantoad.mmpmod.gui.client.note.GuiNote;
 import mushroommantoad.mmpmod.gui.client.tome.GuiTome;
-import mushroommantoad.mmpmod.init.ModBlocks;
 import mushroommantoad.mmpmod.network.SToCAbsorptionSpireParticlePacket;
 import mushroommantoad.mmpmod.network.SToCParticleAtPosPacket;
 import mushroommantoad.mmpmod.network.SendBookOpenPacket;
 import mushroommantoad.mmpmod.network.SendNoteOpenPacket;
-import net.minecraft.block.Blocks;
+import mushroommantoad.mmpmod.proxy.client.HandleDisplayParticleAt;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.particles.BlockParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+@SuppressWarnings("resource")
 public class ClientProxy extends CommonProxy
 {
 	@Override
@@ -65,15 +64,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void displayAtPosParticles(ServerPlayerEntity sender, SToCParticleAtPosPacket message) 
 	{
-		World worldIn = Minecraft.getInstance().world;
-		
-		for(double x = message.sX - 0.5; x <= message.sX + 0.5; x = x + Math.random() / 1.2)
-			for(double y = message.sY; y <= message.sY + 3; y = y + Math.random() / 1.2)
-				for(double z = message.sZ -0.5; z <= message.sZ + 0.5; z = z + Math.random() / 1.2)
-				{
-					if(message.type == 0) worldIn.addParticle(new BlockParticleData(ParticleTypes.FALLING_DUST, Blocks.BLUE_SHULKER_BOX.getDefaultState()), x, y, z, 0.0D, 0.0D, 0.0D);
-					if(message.type == 2) worldIn.addParticle(new BlockParticleData(ParticleTypes.FALLING_DUST, ModBlocks.expion_block.getDefaultState()), x, y, z, 0.0D, 0.0D, 0.0D);
-				}
-		if(message.type == 1) worldIn.addParticle(ParticleTypes.EXPLOSION, message.sX, message.sY, message.sZ, 0.0D, 0.0D, 0.0D);
+		int extra = message.extraData;
+		HandleDisplayParticleAt.display(message.type, message.sX, message.sY, message.sZ, extra);
 	}
 }

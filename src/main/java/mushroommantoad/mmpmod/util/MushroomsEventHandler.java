@@ -1,6 +1,7 @@
 package mushroommantoad.mmpmod.util;
 
 import mushroommantoad.mmpmod.entities.boss.expionic_abomination.ExpionicAbominationEntity;
+import mushroommantoad.mmpmod.entities.boss.solarionic_abomination.SolarionicAbominationEntity;
 import mushroommantoad.mmpmod.entities.boss.vimionic_abomination.VimionicAbominationEntity;
 import mushroommantoad.mmpmod.entities.spectral.ISpectralEntity;
 import mushroommantoad.mmpmod.init.ModEntities;
@@ -9,7 +10,9 @@ import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.monster.HuskEntity;
 import net.minecraft.entity.monster.PhantomEntity;
+import net.minecraft.entity.monster.ZombiePigmanEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
@@ -101,20 +104,24 @@ public class MushroomsEventHandler
 							nbt.putInt("VimionAscension", nbt.getInt("VimionAscension") + 1);
 							if(nbt.getInt("VimionAscension") >= 2)
 							{
+								Entity ent;
 								if(mobIn instanceof PhantomEntity)
 								{
-									ExpionicAbominationEntity vim = new ExpionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.EXPIONIC_ABOMINATION, worldIn);
-									vim.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
-									worldIn.addEntity(vim);
-									entity.remove();
+									ent = new ExpionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.EXPIONIC_ABOMINATION, worldIn);
+								}
+								else if(mobIn instanceof ZombiePigmanEntity || mobIn instanceof HuskEntity)
+								{
+									SolarionicAbominationEntity sol = new SolarionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.SOLARIONIC_ABOMINATION, worldIn);
+									sol.setStellarType(SolarionicAbominationEntity.getStellarColor(sol));
+									ent = sol;
 								}
 								else
 								{
-									VimionicAbominationEntity vim = new VimionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.VIMIONIC_ABOMINATION, worldIn);
-									vim.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
-									worldIn.addEntity(vim);
-									entity.remove();
+									ent = new VimionicAbominationEntity((EntityType<? extends CreatureEntity>) ModEntities.VIMIONIC_ABOMINATION, worldIn);
 								}
+								ent.setPosition(entity.getPosX(), entity.getPosY(), entity.getPosZ());
+								worldIn.addEntity(ent);
+								entity.remove();
 							}
 						}
 						else

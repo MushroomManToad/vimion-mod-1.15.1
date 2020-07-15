@@ -1,10 +1,14 @@
 package mushroommantoad.mmpmod.entities.boss.vimionic_abomination;
 
-import mushroommantoad.mmpmod.entities.boss.goals.SummonAbsorptionSpireAtGoal;
-import mushroommantoad.mmpmod.entities.boss.goals.SummonSpectralSpriteAtGoal;
+import java.util.Random;
+
+import mushroommantoad.mmpmod.entities.boss.IVimionicEntity;
+import mushroommantoad.mmpmod.entities.boss.goals.vimionic_abomination.SummonAbsorptionSpireAtGoal;
+import mushroommantoad.mmpmod.entities.boss.goals.vimionic_abomination.SummonSpectralSpriteAtGoal;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntitySize;
@@ -19,12 +23,14 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.BossInfo;
@@ -34,7 +40,7 @@ import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class VimionicAbominationEntity extends CreatureEntity 
+public class VimionicAbominationEntity extends CreatureEntity implements IVimionicEntity
 {
 	private final ServerBossInfo bossInfo = (ServerBossInfo)(new ServerBossInfo(new TranslationTextComponent("bossbar.vimion.vimionic_abomination.name").applyTextStyle(TextFormatting.GREEN), BossInfo.Color.GREEN, BossInfo.Overlay.PROGRESS)).setCreateFog(true);
 	private static final DataParameter<Boolean> SUMMONING_ENTITY = EntityDataManager.createKey(VimionicAbominationEntity.class, DataSerializers.BOOLEAN);
@@ -75,6 +81,9 @@ public class VimionicAbominationEntity extends CreatureEntity
 	}
 	
 	@Override
+	protected void playStepSound(BlockPos pos, BlockState blockIn) {}
+	
+	@Override
 	public void tick() 
 	{
 		if (this.world instanceof ServerWorld) 
@@ -98,7 +107,7 @@ public class VimionicAbominationEntity extends CreatureEntity
 				this.spriteCooldown--;
 				if(this.spriteCooldown < 0)
 				{
-					this.spriteCooldown = (int) (this.getHealth()) + 1;
+					this.spriteCooldown = (int) (this.getHealth() / 2.2) + 1;
 				}
 				nbt.putInt("spriteCooldown", this.spriteCooldown);
 			}
@@ -150,23 +159,9 @@ public class VimionicAbominationEntity extends CreatureEntity
 	protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) 
 	{
 		super.dropSpecialItems(source, looting, recentlyHitIn);
-		ItemEntity itementity0 = this.entityDropItem(ModItems.vimioplasm);
-		if (itementity0 != null) {itementity0.setNoDespawn();}
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity1 = this.entityDropItem(ModItems.vimioplasm);
-			if (itementity1 != null) {itementity1.setNoDespawn();}
-		}
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity2 = this.entityDropItem(ModItems.vimioplasm);
-			if (itementity2 != null) {itementity2.setNoDespawn();}
-		}
-		if(Math.random() > 0.75)
-		{
-			ItemEntity itementity3 = this.entityDropItem(ModItems.vimioplasm);
-			if (itementity3 != null) {itementity3.setNoDespawn();}
-		}
+		Random random = new Random();
+		ItemEntity itementity = this.entityDropItem(new ItemStack(ModItems.vimioplasm, random.nextInt(4) + 1));
+		itementity.setNoDespawn();
 	}
 	
 	@Override

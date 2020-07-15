@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "vimion:block/torch/purple_stellar_torch" }
+    }
+}

@@ -1,29 +1,24 @@
 package mushroommantoad.mmpmod.items;
 
+import java.util.List;
 import java.util.Random;
 
 import mushroommantoad.mmpmod.blocks.necrion.NecrioniteSummonerBlock;
-import mushroommantoad.mmpmod.entities.spectral.chicken.SpectralChickenEntity;
-import mushroommantoad.mmpmod.entities.spectral.cow.SpectralCowEntity;
-import mushroommantoad.mmpmod.entities.spectral.pig.SpectralPigEntity;
-import mushroommantoad.mmpmod.entities.spectral.rabbit.SpectralRabbitEntity;
-import mushroommantoad.mmpmod.entities.spectral.sheep.SpectralSheepEntity;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.block.AirBlock;
-import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -38,7 +33,6 @@ public class ItemSpirit extends Item
 	public ActionResultType onItemUse(ItemUseContext context) 
 	{
 		World worldIn = context.getWorld();
-		PlayerEntity playerIn = context.getPlayer();
 		BlockPos pos = context.getPos();
 		Random rand = new Random();
 		
@@ -71,13 +65,29 @@ public class ItemSpirit extends Item
 				
 				LivingEntity entity = new CowEntity(EntityType.COW, worldIn);
 				
-				if(this == ModItems.chicken_spirit) entity = new SpectralChickenEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_CHICKEN, worldIn);
-				if(this == ModItems.cow_spirit) entity = new SpectralCowEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_COW, worldIn);
-				if(this == ModItems.pig_spirit) entity = new SpectralPigEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_PIG, worldIn);
-				if(this == ModItems.rabbit_spirit) entity = new SpectralRabbitEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_RABBIT, worldIn);
-				if(this == ModItems.sheep_spirit) entity = new SpectralSheepEntity((EntityType<? extends CreatureEntity>) ModEntities.SPECTRAL_SHEEP, worldIn);
+				if(this == ModItems.chicken_spirit) entity = ModEntities.SPECTRAL_CHICKEN.create(worldIn);
+				if(this == ModItems.cow_spirit) entity = ModEntities.SPECTRAL_COW.create(worldIn);
+				if(this == ModItems.pig_spirit) entity = ModEntities.SPECTRAL_PIG.create(worldIn);
+				if(this == ModItems.rabbit_spirit) entity = ModEntities.SPECTRAL_RABBIT.create(worldIn);
+				if(this == ModItems.sheep_spirit) entity = ModEntities.SPECTRAL_SHEEP.create(worldIn);
 				
-				entity.getType().spawn(worldIn, context.getItem(), playerIn, nextPos, SpawnReason.TRIGGERED, false, false);
+				entity.setPosition(nextPos.getX(), nextPos.getY(), nextPos.getZ());
+				worldIn.addEntity(entity);
+				
+				List<LivingEntity> entities = worldIn.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(entity.getPosX() - 64, entity.getPosY() - 64, entity.getPosZ() - 64, entity.getPosX() + 64, entity.getPosY() + 64, entity.getPosZ() + 64));
+				
+				for(LivingEntity e : entities)
+				{
+					if(e.isEntityUndead())
+					{
+						e.setRevengeTarget(entity);
+						if(e instanceof PhantomEntity)
+						{
+							PhantomEntity phantom = (PhantomEntity) e;
+							phantom.setAttackTarget(entity);
+						}
+					}
+				}
 				
 				context.getItem().shrink(1);
 				

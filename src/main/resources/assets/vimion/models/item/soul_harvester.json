@@ -1,6 +1,7 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "vimion:item/soul_harvester"
+        "layer0": "vimion:item/soul_harvester_layer0",
+		"layer1": "vimion:item/soul_harvester_layer1"
     }
 }

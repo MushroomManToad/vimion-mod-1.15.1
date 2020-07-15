@@ -14,6 +14,7 @@ public class SToCParticleAtPosPacket
 	public double sY;
 	public double sZ;
 	public int type;
+	public int extraData = 0;
 
 	public SToCParticleAtPosPacket(double sX, double sY, double sZ, int type) 
 	{
@@ -23,12 +24,22 @@ public class SToCParticleAtPosPacket
 		this.type = type;
 	}
 	
+	public SToCParticleAtPosPacket(double sX, double sY, double sZ, int type, int extraData) 
+	{
+		this.sX = sX;
+		this.sY = sY;
+		this.sZ = sZ;
+		this.type = type;
+		this.extraData = extraData;
+	}
+	
 	public void serialize(PacketBuffer buf) 
 	{
 		buf.writeDouble(sX);
 		buf.writeDouble(sY);
 		buf.writeDouble(sZ);
 		buf.writeInt(type);
+		buf.writeInt(extraData);
 	}
 	
 	public static SToCParticleAtPosPacket deserialize(PacketBuffer buf) 
@@ -36,9 +47,10 @@ public class SToCParticleAtPosPacket
 		double sX = buf.readDouble();
 		double sY = buf.readDouble();
 		double sZ = buf.readDouble();
-		int color = buf.readInt();
+		int type = buf.readInt();
+		int extra = buf.readInt();
 		
-		return new SToCParticleAtPosPacket(sX, sY, sZ, color);
+		return new SToCParticleAtPosPacket(sX, sY, sZ, type, extra);
 	}
 	
 	public static void handle(SToCParticleAtPosPacket message, Supplier<NetworkEvent.Context> contextSupplier) {

@@ -15,6 +15,7 @@ import mushroommantoad.mmpmod.proxy.ClientProxy;
 import mushroommantoad.mmpmod.proxy.CommonProxy;
 import mushroommantoad.mmpmod.util.MushroomsEventHandler;
 import mushroommantoad.mmpmod.util.VimionicTomeListener;
+import mushroommantoad.mmpmod.util.registry.ParticleRegistry;
 import mushroommantoad.mmpmod.world.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderType;
@@ -26,6 +27,7 @@ import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -48,8 +50,15 @@ public class Main {
 
 		networkHandler.registerPackets();
 		
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegistries);
+		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		
+		
+		modEventBus.addListener(this::setup);
+		modEventBus.addListener(this::clientRegistries);
+		
+		// Deferred Registries should eventually be moved here. @1.16
+		ParticleRegistry.PARTICLES.register(modEventBus);
+		// Deferred Registries should eventually be moved here. @1.16
 
 		MinecraftForge.EVENT_BUS.register(this);
 		
@@ -78,6 +87,19 @@ public class Main {
         RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_the_sun_bush, cutout);
         RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_annihilation_bush, cutout);
         RenderTypeLookup.setRenderLayer(ModBlocks.berries_of_the_universe_bush, cutout);
+        
+        RenderTypeLookup.setRenderLayer(ModBlocks.blue_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.blue_stellar_wall_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.red_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.red_stellar_wall_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.orange_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.orange_stellar_wall_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.white_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.white_stellar_wall_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.black_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.black_stellar_wall_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.purple_stellar_torch, cutout);
+        RenderTypeLookup.setRenderLayer(ModBlocks.purple_stellar_wall_torch, cutout);
         logger.debug("Completed Misc. Renders");
 		logger.info("Client Registries Added");
 	}

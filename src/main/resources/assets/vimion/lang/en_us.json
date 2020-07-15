@@ -27,6 +27,13 @@
 	"item.vimion.nihilioplasm": "Nihilioplasm",
 	"item.vimion.expioplasm": "Expioplasm",
 	
+	"item.vimion.blue_stellarioplasm": "Blue Stellarioplasm",
+	"item.vimion.red_stellarioplasm": "Red Stellarioplasm",
+	"item.vimion.orange_stellarioplasm": "Orange Stellarioplasm",
+	"item.vimion.white_stellarioplasm": "White Stellarioplasm",
+	"item.vimion.black_stellarioplasm": "Black Stellarioplasm",
+	"item.vimion.purple_stellarioplasm": "Purple Stellarioplasm",
+	
 	"item.vimion.memory_crystal": "Memory Crystal",
 	
 	"item.vimion.vimionite_dagger": "Vimionite Dagger",
@@ -34,6 +41,13 @@
 	"item.vimion.solarionite_pickaxe": "Solarionite Pickaxe",
 	"item.vimion.nihilionite_axe": "Nihilionite Axe",
 	"item.vimion.expionite_spade": "Expionite Spade",
+	
+	"item.vimion.blue_stellar_torch": "Stellar Torch (Blue)",
+	"item.vimion.red_stellar_torch": "Stellar Torch (Red)",
+	"item.vimion.orange_stellar_torch": "Stellar Torch (Orange)",
+	"item.vimion.white_stellar_torch": "Stellar Torch (White)",
+	"item.vimion.black_stellar_torch": "Stellar Torch (Black)",
+	"item.vimion.purple_stellar_torch": "Stellar Torch (Purple)",
 	
 	"item.vimion.soul_harvester": "Soul Harvester",
 	
@@ -81,6 +95,20 @@
 	"block.vimion.concealed_expionite_ore": "Energetic Stone",
 	"block.vimion.expionite_ore": "Expionite Ore",
 	
+	"block.vimion.blue_stellar_torch": "Stellar Torch (Blue)",
+	"block.vimion.red_stellar_torch": "Stellar Torch (Red)",
+	"block.vimion.orange_stellar_torch": "Stellar Torch (Orange)",
+	"block.vimion.white_stellar_torch": "Stellar Torch (White)",
+	"block.vimion.black_stellar_torch": "Stellar Torch (Black)",
+	"block.vimion.purple_stellar_torch": "Stellar Torch (Purple)",
+	
+	"block.vimion.blue_stellar_wall_torch": "Stellar Torch (Blue)",
+	"block.vimion.red_stellar_wall_torch": "Stellar Torch (Red)",
+	"block.vimion.orange_stellar_wall_torch": "Stellar Torch (Orange)",
+	"block.vimion.white_stellar_wall_torch": "Stellar Torch (White)",
+	"block.vimion.black_stellar_wall_torch": "Stellar Torch (Black)",
+	"block.vimion.purple_stellar_wall_torch": "Stellar Torch (Purple)",
+	
 	"block.vimion.necrionite_summoner": "Necrionite Summoner",
 	"block.vimion.expionite_crate": "Expionite Crate",
 	
@@ -90,12 +118,18 @@
 	"entity.vimion.spectral_pig": "Spectral Pig",
 	"entity.vimion.spectral_rabbit": "Spectral Rabbit",
 	"entity.vimion.vimionic_abomination": "Vimionic Abomination",
+	"entity.vimion.solarionic_abomination": "Solarionic Abomination",
 	"entity.vimion.expionic_abomination": "Expionic Abomination",
+	"entity.vimion.solar_blast": "Solar Blast",
+	"entity.vimion.fire_blast": "Fire Blast",
 	"entity.vimion.absorption_spire": "Absorption Spire",
+	"entity.vimion.spectral_soul": "Spectral Soul",
 	
 	"bossbar.vimion.vimionic_abomination.name": "Vimionic Abomination",
 	"bossbar.vimion.necrionic_abomination.name": "Necrionic Abomination",
 	"bossbar.vimion.solarionic_abomination.name": "Solarionic Abomination",
+	"bossbar.vimion.lunarionic_abomination.name": "Lunarionic Abomination",
+	"bossbar.vimion.stellarionic_abomination.name": "Stellarionic Abomination",
 	"bossbar.vimion.nihilionic_abomination.name": "Nihilionic Abomination",
 	"bossbar.vimion.expionic_abomination.name": "Expionic Abomination",
 	"berries.vimion.annihilation.lore": "And you thought that that chili destroyed your guts!",
@@ -106,6 +140,7 @@
 	"death.attack.absorptionSpire": "%1$s was consumed by a Vimionic Absorption Spire",
 	"death.attack.expionicTeleport": "%1$s was imploded by the Expionic Abomination",
 	"death.attack.spriteBurst": "%1$s was somehow killed by a Spectral Sprite. Well done...",
+	"death.attack.solarBlast": "%1$s didn't bring their sunscreen!",
 	
 	"itemGroup.vimion": "Vimion"
 }

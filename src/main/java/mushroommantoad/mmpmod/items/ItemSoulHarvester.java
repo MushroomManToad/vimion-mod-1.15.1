@@ -1,5 +1,7 @@
 package mushroommantoad.mmpmod.items;
 
+import mushroommantoad.mmpmod.entities.boss.IVimionicEntity;
+import mushroommantoad.mmpmod.entities.spectral.ISpectralEntity;
 import mushroommantoad.mmpmod.init.ModItems;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
@@ -7,6 +9,7 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.world.World;
 
 public class ItemSoulHarvester extends SwordItem
 {
@@ -17,10 +20,10 @@ public class ItemSoulHarvester extends SwordItem
 	
 	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) 
 	{
-		if(!attacker.getEntityWorld().isRemote)
-		if(!target.isAlive() && !target.isEntityUndead())
+		World worldIn = attacker.getEntityWorld();
+		if(!worldIn.isRemote)
+		if(!target.isAlive() && !target.isEntityUndead() && !(target instanceof ISpectralEntity) && !(target instanceof IVimionicEntity))
 		{
-			System.out.println(target.getEntityString());
 			ItemStack droppedStack = new ItemStack(ModItems.soul, 1);
 			CompoundNBT nbt = droppedStack.getTag();
 			if(nbt == null) nbt = new CompoundNBT();
@@ -31,10 +34,10 @@ public class ItemSoulHarvester extends SwordItem
 				ItemSoul soul = (ItemSoul) droppedStack.getItem();
 				soul.updateName(droppedStack);
 			}
-			ItemEntity drop = new ItemEntity(attacker.getEntityWorld(), target.getPosX(), target.getPosY(), target.getPosZ(), droppedStack);
+			ItemEntity drop = new ItemEntity(worldIn, target.getPosX(), target.getPosY(), target.getPosZ(), droppedStack);
 			
 			
-			if(drop != null) {attacker.getEntityWorld().addEntity(drop);}
+			if(drop != null) {worldIn.addEntity(drop);}
 		}
 		return super.hitEntity(stack, target, attacker);
 	}

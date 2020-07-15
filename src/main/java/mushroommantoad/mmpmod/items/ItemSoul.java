@@ -1,5 +1,6 @@
 package mushroommantoad.mmpmod.items;
 
+import java.util.List;
 import java.util.Random;
 
 import mushroommantoad.mmpmod.blocks.necrion.NecrioniteSummonerBlock;
@@ -7,8 +8,8 @@ import mushroommantoad.mmpmod.entities.spectral.soul.SpectralSoulEntity;
 import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.util.MushroomsUtil;
 import net.minecraft.block.AirBlock;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.PhantomEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
@@ -17,6 +18,7 @@ import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
@@ -34,7 +36,6 @@ public class ItemSoul extends Item
 	public ActionResultType onItemUse(ItemUseContext context) 
 	{
 		World worldIn = context.getWorld();
-		PlayerEntity playerIn = context.getPlayer();
 		BlockPos pos = context.getPos();
 		Random rand = new Random();
 		
@@ -65,16 +66,30 @@ public class ItemSoul extends Item
 			{
 				BlockPos nextPos = this.computeNextPos(worldIn, pos, rand);
 				
-				SpectralSoulEntity soul = new SpectralSoulEntity(ModEntities.SPECTRAL_SOUL, worldIn);
-				
-				soul.getType().spawn(worldIn, context.getItem(), playerIn, nextPos, SpawnReason.TRIGGERED, false, false);
-				
+				SpectralSoulEntity soul = ModEntities.SPECTRAL_SOUL.create(worldIn);
 				CompoundNBT nbt = context.getItem().getTag();
 				if(nbt != null)
 				{
 					if(nbt.contains("entityIn"))
 					{
 						soul.setRender(nbt.getString("entityIn"));
+					}
+				}
+				soul.setPosition(nextPos.getX(), nextPos.getY(), nextPos.getZ());
+				worldIn.addEntity(soul);
+				
+				List<LivingEntity> entities = worldIn.getEntitiesWithinAABB(LivingEntity.class, new AxisAlignedBB(soul.getPosX() - 64, soul.getPosY() - 64, soul.getPosZ() - 64, soul.getPosX() + 64, soul.getPosY() + 64, soul.getPosZ() + 64));
+				
+				for(LivingEntity e : entities)
+				{
+					if(e.isEntityUndead())
+					{
+						e.setRevengeTarget(soul);
+						if(e instanceof PhantomEntity)
+						{
+							PhantomEntity phantom = (PhantomEntity) e;
+							phantom.setAttackTarget(soul);
+						}
 					}
 				}
 				

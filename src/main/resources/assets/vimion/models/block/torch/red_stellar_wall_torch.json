@@ -1,0 +1,6 @@
+{
+    "parent": "block/torch_wall",
+    "textures": {
+        "torch": "vimion:block/red_stellar_torch"
+    }
+}

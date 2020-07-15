@@ -8,6 +8,8 @@ import mushroommantoad.mmpmod.blocks.VimionGrassBlock;
 import mushroommantoad.mmpmod.blocks.VimionOreBlock;
 import mushroommantoad.mmpmod.blocks.expion.crate.BlockExpionCrate;
 import mushroommantoad.mmpmod.blocks.necrion.NecrioniteSummonerBlock;
+import mushroommantoad.mmpmod.blocks.solarion.SolarionTorchBlock;
+import mushroommantoad.mmpmod.blocks.solarion.SolarionWallTorchBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -49,6 +51,20 @@ public class ModBlocks
 	public static Block berries_of_annihilation_bush;
 	public static Block berries_of_the_universe_bush;
 	
+	public static Block blue_stellar_torch;
+	public static Block red_stellar_torch;
+	public static Block orange_stellar_torch;
+	public static Block white_stellar_torch;
+	public static Block black_stellar_torch;
+	public static Block purple_stellar_torch;
+	
+	public static Block blue_stellar_wall_torch;
+	public static Block red_stellar_wall_torch;
+	public static Block orange_stellar_wall_torch;
+	public static Block white_stellar_wall_torch;
+	public static Block black_stellar_wall_torch;
+	public static Block purple_stellar_wall_torch;
+	
 	public static Block necrionite_summoner;
 	public static Block expionite_crate;
 	
@@ -83,6 +99,20 @@ public class ModBlocks
 				berries_of_the_sun_bush = new VimionBerryBushBlock(Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH)).setRegistryName(location("berries_of_the_sun_bush")),
 				berries_of_annihilation_bush = new VimionBerryBushBlock(Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH)).setRegistryName(location("berries_of_annihilation_bush")),
 				berries_of_the_universe_bush = new VimionBerryBushBlock(Block.Properties.create(Material.PLANTS).tickRandomly().doesNotBlockMovement().sound(SoundType.SWEET_BERRY_BUSH)).setRegistryName(location("berries_of_the_universe_bush")),
+				
+				blue_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD)).setRegistryName(location("blue_stellar_torch")),
+				red_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD)).setRegistryName(location("red_stellar_torch")),
+				orange_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD)).setRegistryName(location("orange_stellar_torch")),
+				white_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(15).sound(SoundType.WOOD)).setRegistryName(location("white_stellar_torch")),
+				black_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(0).sound(SoundType.WOOD)).setRegistryName(location("black_stellar_torch")),
+				purple_stellar_torch = new SolarionTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD)).setRegistryName(location("purple_stellar_torch")),
+				
+				blue_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD).lootFrom(blue_stellar_torch)).setRegistryName(location("blue_stellar_wall_torch")),
+				red_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD).lootFrom(red_stellar_torch)).setRegistryName(location("red_stellar_wall_torch")),
+				orange_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD).lootFrom(orange_stellar_torch)).setRegistryName(location("orange_stellar_wall_torch")),
+				white_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(15).sound(SoundType.WOOD).lootFrom(white_stellar_torch)).setRegistryName(location("white_stellar_wall_torch")),
+				black_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(0).sound(SoundType.WOOD).lootFrom(black_stellar_torch)).setRegistryName(location("black_stellar_wall_torch")),
+				purple_stellar_wall_torch = new SolarionWallTorchBlock(Block.Properties.create(Material.MISCELLANEOUS).doesNotBlockMovement().hardnessAndResistance(0.0f).lightValue(14).sound(SoundType.WOOD).lootFrom(purple_stellar_torch)).setRegistryName(location("purple_stellar_wall_torch")),
 				
 				necrionite_summoner = new NecrioniteSummonerBlock(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0f, 15f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2)).setRegistryName(location("necrionite_summoner")),
 				expionite_crate = new BlockExpionCrate(Block.Properties.create(Material.ROCK).hardnessAndResistance(2.0f, 15f).sound(SoundType.STONE).harvestTool(ToolType.PICKAXE).harvestLevel(2)).setRegistryName(location("expionite_crate"))

@@ -173,6 +173,62 @@
         	{ "name": "vimion:mob/boss/abomination/vimion/death1", "stream": true}
         ]
     },
+    "solarionic_abomination_say":
+    {
+        "category": "entity",
+        "subtitle": "Solarionic/Stellarionic Abomination Eminates",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/solarion/say1", "stream": true}
+        ]
+    },
+    "solarionic_abomination_hurt":
+    {
+        "category": "entity",
+        "subtitle": "Solarionic/Stellarionic Abomination Dims",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/solarion/hurt1", "stream": true}
+        ]
+    },
+    "solarionic_abomination_death":
+    {
+        "category": "entity",
+        "subtitle": "Solarionic/Stellarionic Abomination Collapses",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/solarion/death1", "stream": true}
+        ]
+    },
+    "solarionic_abomination_burn":
+    {
+        "category": "entity",
+        "subtitle": "Abomination Crackles",
+        "sounds": [
+        	{ "name": "minecraft:fire/fire", "stream": true}
+        ]
+    },
+    "solarionic_abomination_solarblast":
+    {
+        "category": "entity",
+        "subtitle": "Abomination Summons Meteor",
+        "sounds": [
+        	{ "name": "minecraft:mob/ghast/fireball4", "stream": true}
+        ]
+    },
+    "solarionic_abomination_fireblast":
+    {
+        "category": "entity",
+        "subtitle": "Abomination Shoots",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/solarion/fireblast", "stream": true}
+        ]
+    },
+    "solarionic_abomination_ascend":
+    {
+        "category": "entity",
+        "subtitle": "Abomination Rises",
+        "sounds": [
+        	{ "name": "vimion:mob/boss/abomination/solarion/ascend", "stream": true}
+        ]
+    },
     "expionic_abomination_say":
     {
         "category": "entity",

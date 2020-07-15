@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=east": { "model": "vimion:block/torch/white_stellar_wall_torch" },
+        "facing=south": { "model": "vimion:block/torch/white_stellar_wall_torch", "y": 90 },
+        "facing=west": { "model": "vimion:block/torch/white_stellar_wall_torch", "y": 180 },
+        "facing=north": { "model": "vimion:block/torch/white_stellar_wall_torch", "y": 270 }
+    }
+}

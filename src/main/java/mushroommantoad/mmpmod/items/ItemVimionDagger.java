@@ -23,6 +23,7 @@ public class ItemVimionDagger extends SwordItem
 		super(tier, attackDamage, attackSpeed, builder);
 	}
 	
+	@SuppressWarnings("resource")
 	public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) 
 	{
 		if(!attacker.getEntityWorld().isRemote)

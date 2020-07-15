@@ -19,6 +19,7 @@ public class ItemGeologicPhaser extends Item
 		super(properties);
 	}
 	
+	@SuppressWarnings("resource")
 	public ActionResultType onItemUse(ItemUseContext context)
 	{
 		if(context.getWorld().isRemote)

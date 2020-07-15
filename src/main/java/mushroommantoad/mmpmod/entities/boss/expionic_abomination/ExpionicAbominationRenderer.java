@@ -13,7 +13,7 @@ public class ExpionicAbominationRenderer extends MobRenderer<ExpionicAbomination
 	public ExpionicAbominationRenderer(EntityRendererManager manager) 
 	{
 		super(manager, new ExpionicAbominationModel<ExpionicAbominationEntity>(), 0f);
-		this.addLayer(new ExptionicAbominationEyesLayer<>(this));
+		this.addLayer(new ExpionicAbominationEyesLayer<>(this));
 	}
 	
 	/*

@@ -232,9 +232,10 @@ public class GuiTomeHoverObject
 		int lS = 0;
 		for(int i = 0; i < text.size(); i++)
 		{
-			if(tome.getMinecraft().fontRenderer.getStringWidth(text.get(i)) > lS)
+			Minecraft mc =tome.getMinecraft();
+			if(mc.fontRenderer.getStringWidth(text.get(i)) > lS)
 			{
-				lS = tome.getMinecraft().fontRenderer.getStringWidth(text.get(i));
+				lS = mc.fontRenderer.getStringWidth(text.get(i));
 			}
 		}
 		return lS;
@@ -248,7 +249,8 @@ public class GuiTomeHoverObject
 	   } 
 	   else 
 	   {
-		   List<String> list = tome.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, wrapWidth);
+		   Minecraft mc =tome.getMinecraft();
+		   List<String> list = mc.fontRenderer.listFormattedStringToWidth(hover, wrapWidth);
 		   if (list.size() < 2) 
 		   {
 			   return list;
@@ -257,20 +259,20 @@ public class GuiTomeHoverObject
 		   {
 			   String s = list.get(0);
 			   String s1 = list.get(1);
-			   int i = tome.getMinecraft().fontRenderer.getStringWidth(s + ' ' + s1.split(" ")[0]);
+			   int i = mc.fontRenderer.getStringWidth(s + ' ' + s1.split(" ")[0]);
 			   if (i - wrapWidth <= 10)
 			   {
-				   return tome.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, i);
+				   return mc.fontRenderer.listFormattedStringToWidth(hover, i);
 			   } 
 			   else 
 			   {
 				   Matcher matcher = PATTERN.matcher(s);
 				   if (matcher.matches()) 
 				   {
-					   int j = tome.getMinecraft().fontRenderer.getStringWidth(matcher.group(1));
+					   int j = mc.fontRenderer.getStringWidth(matcher.group(1));
 					   if (wrapWidth - j <= 10) 
 					   {
-						   return tome.getMinecraft().fontRenderer.listFormattedStringToWidth(hover, j);
+						   return mc.fontRenderer.listFormattedStringToWidth(hover, j);
 					   }
 				   }
 				   return list;

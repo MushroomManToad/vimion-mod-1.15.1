@@ -23,6 +23,7 @@ import mushroommantoad.mmpmod.items.util.VimionFoods;
 import mushroommantoad.mmpmod.lists.ItemTierList;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.WallOrFloorItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 
@@ -49,6 +50,13 @@ public class ModItems
 	public static Item solarioplasm;
 	public static Item nihilioplasm;
 	public static Item expioplasm;
+	
+	public static Item blue_stellarioplasm;
+	public static Item red_stellarioplasm;
+	public static Item orange_stellarioplasm;
+	public static Item white_stellarioplasm;
+	public static Item black_stellarioplasm;
+	public static Item purple_stellarioplasm;
 	
 	public static Item memory_crystal;
 	
@@ -99,6 +107,13 @@ public class ModItems
 	public static Item nihilionic_grass_block;
 	public static Item expionic_grass_block;
 	
+	public static Item blue_stellar_torch;
+	public static Item red_stellar_torch;
+	public static Item orange_stellar_torch;
+	public static Item white_stellar_torch;
+	public static Item black_stellar_torch;
+	public static Item purple_stellar_torch;
+	
 	public static Item necrionite_summoner;
 	public static Item expionite_crate;
 	
@@ -135,6 +150,13 @@ public class ModItems
 				solarioplasm = new Item(new Item.Properties().group(Main.vimion)).setRegistryName(location("solarioplasm")),
 				nihilioplasm = new Item(new Item.Properties().group(Main.vimion)).setRegistryName(location("nihilioplasm")),
 				expioplasm = new Item(new Item.Properties().group(Main.vimion)).setRegistryName(location("expioplasm")),
+				
+				blue_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("blue_stellarioplasm")),
+				red_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("red_stellarioplasm")),
+				orange_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("orange_stellarioplasm")),
+				white_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("white_stellarioplasm")),
+				black_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("black_stellarioplasm")),
+				purple_stellarioplasm = new Item(new Item.Properties()).setRegistryName(location("purple_stellarioplasm")),
 				
 				memory_crystal = new ItemMemoryCrystal(new Item.Properties().group(Main.vimion)).setRegistryName(location("memory_crystal")),
 				
@@ -176,6 +198,13 @@ public class ModItems
 				solarionic_grass_block = new BlockItem(ModBlocks.solarionic_grass_block, new Item.Properties().group(Main.vimion)).setRegistryName(location("solarionic_grass_block")),
 				nihilionic_grass_block = new BlockItem(ModBlocks.nihilionic_grass_block, new Item.Properties().group(Main.vimion)).setRegistryName(location("nihilionic_grass_block")),
 				expionic_grass_block = new BlockItem(ModBlocks.expionic_grass_block, new Item.Properties().group(Main.vimion)).setRegistryName(location("expionic_grass_block")),
+				
+				blue_stellar_torch = new WallOrFloorItem(ModBlocks.blue_stellar_torch, ModBlocks.blue_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("blue_stellar_torch")),
+				red_stellar_torch = new WallOrFloorItem(ModBlocks.red_stellar_torch, ModBlocks.red_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("red_stellar_torch")),
+				orange_stellar_torch = new WallOrFloorItem(ModBlocks.orange_stellar_torch, ModBlocks.orange_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("orange_stellar_torch")),
+				white_stellar_torch = new WallOrFloorItem(ModBlocks.white_stellar_torch, ModBlocks.white_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("white_stellar_torch")),
+				black_stellar_torch = new WallOrFloorItem(ModBlocks.black_stellar_torch, ModBlocks.black_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("black_stellar_torch")),
+				purple_stellar_torch = new WallOrFloorItem(ModBlocks.purple_stellar_torch, ModBlocks.purple_stellar_wall_torch, (new Item.Properties()).group(Main.vimion)).setRegistryName(location("purple_stellar_torch")),
 				
 				expionite_crate = new BlockItem(ModBlocks.expionite_crate, new Item.Properties().group(Main.vimion)).setRegistryName(location("expionite_crate")),
 				necrionite_summoner = new BlockItem(ModBlocks.necrionite_summoner, new Item.Properties().group(Main.vimion)).setRegistryName(location("necrionite_summoner")),

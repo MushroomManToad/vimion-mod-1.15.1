@@ -7,28 +7,19 @@ import mushroommantoad.mmpmod.init.ModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.model.EntityModel;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Pose;
-import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
 
 @OnlyIn(Dist.CLIENT)
 public class SpectralSoulRenderer extends MobRenderer<SpectralSoulEntity, SpectralSoulModel>
-{
-	LivingEntity intEnt;
-	EntityModel<LivingEntity> intMod;
-	
+{	
 	public SpectralSoulRenderer(EntityRendererManager manager) 
 	{
 		super(manager, new SpectralSoulModel(), 0f);
@@ -42,20 +33,7 @@ public class SpectralSoulRenderer extends MobRenderer<SpectralSoulEntity, Spectr
 	
 	@Override
 	public void render(SpectralSoulEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) 
-	{
-		if(intEnt == null) intEnt = this.getIntEnt(entityIn);	
-		if(intMod == null) intMod = this.getInternalModel(entityIn);	
-		
-		if(entityIn.ticksExisted > 1)
-		{
-			//System.out.println(entityIn.getRender() + ", " + intEnt.getEntityString());
-			if(!entityIn.getRender().equalsIgnoreCase(intEnt.getEntityString())) 
-			{
-				intEnt = this.getIntEnt(entityIn);
-				intMod = this.getInternalModel(entityIn);	
-			}
-		}
-		
+	{		
 		matrixStackIn.push();
 		this.entityModel.swingProgress = this.getSwingProgress(entityIn, partialTicks);
 
@@ -105,48 +83,21 @@ public class SpectralSoulRenderer extends MobRenderer<SpectralSoulEntity, Spectr
 			if (f8 > 1.0F) {f8 = 1.0F;}
 		}
 
-		intMod.setLivingAnimations(intEnt, f5, f8, partialTicks);
-		intMod.setRotationAngles(intEnt, f5, f8, f7, f2, f6);
+		entityIn.getInternalModel().setLivingAnimations(entityIn.getInternalEntity(), f5, f8, partialTicks);
+		entityIn.getInternalModel().setRotationAngles(entityIn.getInternalEntity(), f5, f8, f7, f2, f6);
 		boolean flag = this.isVisible(entityIn);
 		boolean flag1 = !flag && !entityIn.isInvisibleToPlayer(Minecraft.getInstance().player);
 		RenderType rendertype = this.func_230042_a_(entityIn, flag, flag1);
 		if (rendertype != null) {
 			IVertexBuilder ivertexbuilder = bufferIn.getBuffer(rendertype);
 			int i = getPackedOverlay(entityIn, this.getOverlayProgress(entityIn, partialTicks));
-			intMod.render(matrixStackIn, ivertexbuilder, packedLightIn, i, 1.0F, 1.0F, 1.0F, flag1 ? 0.15F : 1.0F);
+			entityIn.getInternalModel().render(matrixStackIn, ivertexbuilder, packedLightIn, i, 1.0F, 1.0F, 1.0F, flag1 ? 0.15F : 1.0F);
 		}
 
 		matrixStackIn.pop();
 		super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
 	}
-	
-	public EntityModel<LivingEntity> getInternalModel(SpectralSoulEntity entityIn)
-	{
-		for (EntityRenderer<?> renderer : Minecraft.getInstance().getRenderManager().renderers.values()) 
-		{
-			if(renderer == Minecraft.getInstance().getRenderManager().getRenderer(intEnt))
-			{
-				@SuppressWarnings("unchecked")
-				EntityModel<LivingEntity> m = (EntityModel<LivingEntity>) ((LivingRenderer<?, ?>)renderer).getEntityModel();
-				return m;
-			}
-		}
-		return null;
-	}
-	
-	public LivingEntity getIntEnt(SpectralSoulEntity entity)
-	{
-		String s = entity.getRender();
-		for(EntityType<?> t : ForgeRegistries.ENTITIES)
-		{
-			if(s.equalsIgnoreCase(t.getRegistryName().toString()))
-			{
-				return (LivingEntity) t.create(entity.world);
-			}
-		}
-		return new CreeperEntity(EntityType.CREEPER, entity.world);
-	}
-	
+
 	@Override
 	protected boolean isVisible(SpectralSoulEntity entity) 
 	{
