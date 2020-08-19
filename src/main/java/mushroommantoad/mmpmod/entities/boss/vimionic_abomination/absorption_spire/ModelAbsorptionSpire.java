@@ -14,6 +14,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ModelAbsorptionSpire extends EntityModel<EntityAbsorptionSpire> {
 	private final ModelRenderer bone;
 
+	private float partialTicks;
+	
 	public ModelAbsorptionSpire() {
 		textureWidth = 64;
 		textureHeight = 64;
@@ -37,6 +39,12 @@ public class ModelAbsorptionSpire extends EntityModel<EntityAbsorptionSpire> {
 		bone.setTextureOffset(28, 18);
 		bone.addBox(-1.0F, -39.0F + yModif, -1.0F, 2, 1, 2, 0.0F);
 	}
+	
+	@Override
+	public void setLivingAnimations(EntityAbsorptionSpire entityIn, float limbSwing, float limbSwingAmount, float partialTick) 
+	{
+		this.partialTicks = partialTick;
+	}
 
 	@Override
 	public void render(@Nonnull MatrixStack matrix, @Nonnull IVertexBuilder vertexBuilder, int light, int overlayLight, float red, float green, float blue, float alpha) 
@@ -53,6 +61,6 @@ public class ModelAbsorptionSpire extends EntityModel<EntityAbsorptionSpire> {
 	@Override
 	public void setRotationAngles(EntityAbsorptionSpire entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float yaw, float pitch)
 	{
-		this.bone.rotateAngleY = ageInTicks / 30;
+		this.bone.rotateAngleY = (ageInTicks + partialTicks) / 30;
 	}
 }

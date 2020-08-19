@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void openVimionTomeGUI(ServerPlayerEntity sender, SendBookOpenPacket message) 
 	{
-		Minecraft.getInstance().displayGuiScreen(new GuiTome(sender, message.getBookData()));
+		Minecraft.getInstance().displayGuiScreen(new GuiTome(sender, message.getIDData(), message.getBoolData()));
 	}
 	
 	@Override

@@ -142,5 +142,97 @@
 	"death.attack.spriteBurst": "%1$s was somehow killed by a Spectral Sprite. Well done...",
 	"death.attack.solarBlast": "%1$s didn't bring their sunscreen!",
 	
+	
+	
+	"tomequest.vimion.getTome": "Basics of the Vimionic Tome",
+	"tomequest.vimion.getTome.hover": "Click here for an introduction to navigating the Vimionic Tome",
+	"tomequest.vimion.getTome.grey": "Well, something broke. You shouldn't be able to see this text. Please report whatever you just did on the issue tracker on Github!",
+	"tomequest.vimion.getTome.gold": "The Vimionic Tome can be used to view information about and your progress towards various objectives within the Vimion Mod. \n\nIt has many useful features included for your use. These will be outlined in the following pages. \n\nFirst, the arrows on the bottom of each page can be used to cycle through these info pages. It's probably important to mention that first. \n\nTo exit out of this info page and return to where you were in the Vimionic Tome, just press [Esc] on your keyboard. \nThe Vimionic Tome contains 5 chapters. These can be cycled through with the tab buttons on the side of the Objective View. These chapters may appear empty early in the mod, but they will slowly fill up with Objectives as you progress. \n\n\nHovering over an objective in the Objective View part of this GUI will display that Objective's title and a short description of what you have to do to complete it. \n\n\n\n\n\nBefore completing the Objective, it will appear in grey. Clicking on the Objective at this point will take you to an info page that will go into more detail about what you need to do to complete the Objective as well as share a little lore about it. \n\nAfter completing an Objective, it will appear in gold in Objective View. Clicking on it at this point will open up an info page that goes much deeper into its lore as well as giving hints about what you should do next. \n\n\n\nNote that you cannot complete an Objective prior to completing its \"Parent\" Objective (This is usually the Objective you had to complete before it appeared in the Tome). \n\n\n\n\nFor example, you can't complete the \"Craft a Necrion Gemstone\" Objective before completing the \"Craft an Advanced Geologic Phaser\" one.",
+	
+	"tomequest.vimion.vimionGemstone": "Vimion!",
+	"tomequest.vimion.vimionGemstone.hover": "Craft a Vimion Gemstone from four Vimionite Shards",
+	"tomequest.vimion.vimionGemstone.grey": "The same shards that were used to craft this Tome seem to want to bind together in groups of four. Using the Crafting Table, it should be possible to assemble a Gemstone from this new, dephased material by placing it in a 2x2 square. In fact, the shards combine so readily, even inventory crafting should work for this.",
+	"tomequest.vimion.vimionGemstone.gold": "Vimion: a material that emits a strong, unidentified energy when life forms are near it. This energy seems to scale with the size of the life form near it, so its reaction to, for example, a Chicken is far less than its reaction to, say, a Cow. Analysis of this material at the atomic level has revealed that there are, in fact, no atoms involved whatsoever. If this observation is correct, Vimion is the first known material made entirely of Magic in a stable structure.\n\nThis property seems to be consistent with how malleable Vimion is. While it is most stable in a crystalline gemstone structure, it will readily deform and bind to other substances. This property makes its potential as a tool material by itself small, but the possibility of combining it with other tools to create objects with heightened magical properties is greater than any other known substance!\n\nResearch into this substance is certain to yield fascinating results!",
+	
+	"tomequest.vimion.advancedPhaser": "Advanced Phasing",
+	"tomequest.vimion.advancedPhaser.hover": "Surround a Geologic Phaser with Vimion Gemstones in the Crafting Table to craft an Advanced Geologic Phaser",
+	"tomequest.vimion.advancedPhaser.grey": "One of our first ideas for a use of Vimion was to surround a Geologic Phaser with the gemstones in a Crafting Table. This \"Advanced\" Geologic Phaser should be able to dephase at a different frequency, potentially leading to new discoveries!",
+	"tomequest.vimion.advancedPhaser.gold": "This new tool has proven to be extremely powerful. First, the Vimion seemed to strengthen the Phaser, granting it much more durability. However, even more importantly, this \"Advanced\" Geologic Phaser has been reported to be able to dephase at least four new ores. As such, new objectives have been added to this Tome for each of these. It's time to head back down to the caves to try to locate these new materials with the Advanced Geologic Phaser, and to try to discover their properties and uses!",
+	
+	"tomequest.vimion.vimionDagger": "Spirits?",
+	"tomequest.vimion.vimionDagger.hover": "Craft a Vimionite Dagger to harvest the Spirits of certain Mobs",
+	"tomequest.vimion.vimionDagger.grey": "While Vimion is a brittle material, one Miner figured out a way to form it into a fairly strong dagger. This can now be done on any standard crafting table by using Vimion Gemstones and a Stick in the same way you would craft a Diamond Sword from Diamonds and a Stick. A dagger that kills things while it emits a strong life-based energy should have some interesting effect, right?",
+	"tomequest.vimion.vimionDagger.gold": "It took almost a week for anyone to find something truly remarkable about this new tool, and interestingly, it was the wife of a farmer that lost his mind and slaughtered all of his livestock with his Vimionite Dagger. In the aftermath of the destruction, his wife noticed that among the raw beef, pork, chicken, mutton, and rabbit, there were small, glowing, green objects.\n\nThese were eventually confirmed to be chunks of the Vimion Dagger that had broken off at the time of the animals' death and bound to those animals' souls, trapping them in our universe. This has potentially massive implications, both for Miners and philosophers!\n\nMore research must be done into this supernatural phenomenon!",
+	
+	"tomequest.vimion.mobSpirit": "Spirits!",
+	"tomequest.vimion.mobSpirit.hover": "Kill a farm animal with the Vimionic Dagger and obtain a Mob Spirit",
+	"tomequest.vimion.mobSpirit.grey": "So far, tests have only shown the Vimionite Dagger to be capable of harvesting the spirits of Chickens, Cows, Pigs, Rabbits, and Sheep. However, this harvesting is not guaranteed, and multiple animals of a species may have to be killed with the Vimionite Dagger before a spirit is obtained.",
+	"tomequest.vimion.mobSpirit.gold": "These Mob Spirits are fascinating objects! It seems that at the exact moment an animal's spirit separates from its body, there's a small chance that a piece of the fragile Vimionite Dagger will break off and bind to it. From then on, the spirit treats the Vimionite fragment as if it were its body.\n\nThis opens up several questions about both the structure and nature of life, but I'll leave those to the philosophers. For now, I, like most of the team, just want to know what these Spirits can be used for!",	
+	
+	"tomequest.vimion.challengeMobSpirits": "All the Spirits!",
+	"tomequest.vimion.challengeMobSpirits.hover": "Obtain all 5 Animal Spirits",
+	"tomequest.vimion.challengeMobSpirits.grey": "Chickens, Cows, Pigs, Rabbits, and Sheep are all reportedly capable of yielding their spirits to the Vimionite Dagger. Collecting all five of these could prove to be a challenge, but it should be a worthwhile one!",
+	"tomequest.vimion.challengeMobSpirits.gold": "We now have ready access to all of the known mob spirits. Although none of their specific use cases are yet known, they will certainly come in handy in the future! Keep an eye out for new uses in future entries to this Tome.",
+	
+	"tomequest.vimion.harvestBerry": "Grass and Berries",
+	"tomequest.vimion.harvestBerry.hover": "Harvest any of the Vimionic Berries",
+	"tomequest.vimion.harvestBerry.grey": "Filler",
+	"tomequest.vimion.harvestBerry.gold": "Filler",	
+	
+	
+	"tomequest.vimion.necrionGemstone": "Necrion!",
+	"tomequest.vimion.necrionGemstone.hover": "Craft a Necrion Gemstone from four Necrionite Shards",
+	"tomequest.vimion.necrionGemstone.grey": "Necrion seems to be far less common than Vimion, although they both seem to appear at around the same depths. While the ore has no reaction at all to the regular Geologic Phaser, it can easily be dephased by a single use of the Advanced Geologic Phaser. This ore, like Vimionite Ore, drops its respective shards, which can be used to create a Necrion Gemstone in the same way as Vimion.",
+	"tomequest.vimion.necrionGemstone.gold": "Necrion has earned its name from its association with death. It seems to behave exactly opposite to Vimion in that it emits its strongest energy near death or the undead.\n\nOtherwise, Necrion's properties and structure seem to be identical to those of Vimion. It, too, is extremely brittle, and it seems to be made not of atoms, but of crystalized magic. More research will certainly reveal many more applications of this new material!",
+	
+	"tomequest.vimion.necrionSummoner": "The Bridge...",
+	"tomequest.vimion.necrionSummoner.hover": "Craft a Necrionite Summoner to reincarnate Mob Spirits!",
+	"tomequest.vimion.necrionSummoner.grey": "The Necrionite Summoner, a device first created by a Miner living in an End Pillar, may be the key to unlocking the potential of Mob Spirits. By laying a table of three Necrion Gemstones on top of a base of three Obsidian Blocks, a device that bridges the gap between the \"spirit world,\" in whatever form that takes, and reality can be crafted. Placing this device and using a Mob Spirit on it will summon a ghostlike version of that entity. Very little is currently understood about this process.",
+	"tomequest.vimion.necrionSummoner.gold": "The reincarnated mob Spirits have been called Spectral Entities, and they, as expected, have many interesting properties. Besides making deep, resonant sounds as they move around, these animals are also popular – with the undead. Upon their arrival from \"beyond,\" nearly every undead mob in the area is instantly drawn to their location with intent to kill. It seems as though these undead monsters are trying to steal this exposed soul for themselves. We should probably prevent them from doing this...\n\nAnother interesting property of these mobs is that they've never lost their love of food. These Spectral Entities can still be led in the same way their respective physical counterparts can (ex. the Spectral Sheep will follow a player holding wheat). They will also willingly eat these foods, although this will not trigger a breeding response. Instead, eating causes the Spectral Entities to emit a pulse of Vimionic energy that rekindles the aggression of nearby undead mobs towards them. These properties are certain to have plenty of uses, and more properties will likely be discovered in the future.\n\nThe question also still stands why these five mobs are the only ones that can yield their souls to a Vimionite Dagger. There must be a way to obtain the souls of other, slightly more complex creatures through similar means at the very least, right?",
+
+	"tomequest.vimion.resurrectAnimal": "Resurrection",
+	"tomequest.vimion.resurrectAnimal.hover": "Use a Mob Spirit on the Necrionite Summoner to resurrect an animal!",
+	"tomequest.vimion.resurrectAnimal.grey": "Filler",
+	"tomequest.vimion.resurrectAnimal.gold": "Filler",
+	
+	"tomequest.vimion.necrionHoe": "Lawn Remover",
+	"tomequest.vimion.necrionHoe.hover": "Craft a Necrionite Hoe to farm more efficiently!",
+	"tomequest.vimion.necrionHoe.grey": "Filler",
+	"tomequest.vimion.necrionHoe.gold": "Filler",
+
+
+	"tomequest.vimion.solarionGemstone": "Solarion!",
+	"tomequest.vimion.solarionGemstone.hover": "Filler",
+	"tomequest.vimion.solarionGemstone.grey": "Filler",
+	"tomequest.vimion.solarionGemstone.gold": "Filler",
+	
+	"tomequest.vimion.solarionPickaxe": "Ore Pinging",
+	"tomequest.vimion.solarionPickaxe.hover": "Filler",
+	"tomequest.vimion.solarionPickaxe.grey": "Filler",
+	"tomequest.vimion.solarionPickaxe.gold": "Filler",
+	
+	
+	"tomequest.vimion.nihilionGemstone": "Nihilion!",
+	"tomequest.vimion.nihilionGemstone.hover": "Filler",
+	"tomequest.vimion.nihilionGemstone.grey": "Filler",
+	"tomequest.vimion.nihilionGemstone.gold": "Filler",
+	
+	"tomequest.vimion.nihilionAxe": "Treemoval",
+	"tomequest.vimion.nihilionAxe.hover": "Filler",
+	"tomequest.vimion.nihilionAxe.grey": "Filler",
+	"tomequest.vimion.nihilionAxe.gold": "Filler",
+	
+	
+	"tomequest.vimion.expionGemstone": "Expion!",
+	"tomequest.vimion.expionGemstone.hover": "Craft a Expion Gemstone from four Expionite Shards",
+	"tomequest.vimion.expionGemstone.grey": "Expion seems to be far less common than Vimion, although they both seem to appear at around the same depths. While the ore has no reaction whatsoever to the regular Geologic Phaser, it can easily be dephased by a single use of the Advanced Geologic Phaser. This ore, like Vimionite Ore, drops its respective shards, which can be used to create a Necrion Gemstone in the same way as Vimion.",
+	"tomequest.vimion.expionGemstone.gold": "Staring deep into an Expion Gemstone, one may begin to see what appear to be stars and galaxies of a distant part of, if not entirely separate, universe. This deep, beautiful expanse gave this stone its name: Expion.\n\nExpion's structural properties seem to be nearly identical to those of Vimion, including its weight and density. It, too, is extremely brittle, and it seems to be made not of atoms, but of crystalized magic. More research will certainly reveal many more applications of this new material!",
+	
+	"tomequest.vimion.expionShovel": "Dimensional Digging",
+	"tomequest.vimion.expionShovel.hover": "Craft an Expionite Spade",
+	"tomequest.vimion.expionShovel.grey": "Mount a pocket dimension on the end of a couple of sticks like a shovel... sure, why not? According to several reports, rounding out the shape of the Expion Gemstone produces a sort of shovel that can mine more effectively than any other tool ever created. We should give this a try to see if the so-called \"Expionite Spade\" is useful, and to see if it gives us any additional insight into what Expion may be capable of...",
+	"tomequest.vimion.expionShovel.gold": "I couldn't have hoped for more interesting results from this tool! While it isn't very efficient - a wooden shovel is substantially faster - and it is extremely fragile - it can only harvest about 250 blocks before shattering - its functional properties are more remarkable than almost any other item I've ever seen!\n\nOne of the first things we noticed is that enchanting the Expionite Spade doesn't give it that signature purple aura. Instead, that glow seems reserved for activating the tool via right-click. In this state, this Spade becomes capable of channeling the energy of its Expion Gemstone's pocket dimension.\n\nWhenever it is used to mine a block that can normally be harvested with the hand and is most effectively mined with a shovel, it will consume 64 of the Spade's durability and drop 64 copies of that block!\n\nEarly tests show that the Expionite spade emits almost exactly 6.3 MJ of a new form of energy when it harvests a valid block while in active mode. This number, combined with the other known properties of Expion, suggests Spade creates and destroys pocket dimensions one cubic meter in size over and over until it has created a stack of items. If this is the case, then we may have just discovered a material that, among other things, could allow us to make our own dimensions if properly manipulated! More research into the properties of Expion is certainly needed!\n\nAnd to think, this all started with a shovel...",
+	
+	
 	"itemGroup.vimion": "Vimion"
 }

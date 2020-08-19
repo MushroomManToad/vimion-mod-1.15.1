@@ -1,14 +1,15 @@
 package mushroommantoad.mmpmod.gui.client.tome;
 
+import java.util.ArrayList;
+
 import com.mojang.blaze3d.systems.RenderSystem;
 
 import mushroommantoad.mmpmod.Main;
-import mushroommantoad.mmpmod.gui.client.tome.pages.PagesExpion;
-import mushroommantoad.mmpmod.gui.client.tome.pages.PagesNecrion;
-import mushroommantoad.mmpmod.gui.client.tome.pages.PagesNihilion;
-import mushroommantoad.mmpmod.gui.client.tome.pages.PagesSolarion;
-import mushroommantoad.mmpmod.gui.client.tome.pages.PagesVimion;
+import mushroommantoad.mmpmod.init.ModTomeQuests;
+import mushroommantoad.mmpmod.tomequests.TomeQuest;
+import mushroommantoad.mmpmod.tomequests.VTIDs;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -42,11 +43,37 @@ public class GuiTomeChapter
 	public void setPage()
 	{
 		tome.clearHoverButtons();
-		if(name == "vimion") page = PagesVimion.getPage(tome, page_number);
-		if(name == "necrion") page = PagesNecrion.getPage(tome, page_number);
-		if(name == "solarion") page = PagesSolarion.getPage(tome, page_number);
-		if(name == "nihilion") page = PagesNihilion.getPage(tome, page_number);
-		if(name == "expion") page = PagesExpion.getPage(tome, page_number);
+		ArrayList<GuiTomeHoverObject> hoverobjects = new ArrayList<>();
+		for(TomeQuest q : ModTomeQuests.TOMEQUESTS)
+		{
+			if(q.getChapter().equals(name)) 
+			{
+				int id = -1;
+				int pcount = 0;
+				boolean parentsMet = false;
+				for(int i = 0; i < tome.getProgressIDs().length; i++)
+				{
+					if(q.getName().getKey().equals(tome.getProgressIDs()[i]))
+					{
+						id = i;
+					}
+					if(!parentsMet)
+					{
+						PARENTCHECK: for(TranslationTextComponent t : q.getParents())
+						{
+							if(t.getKey().equals(VTIDs.NONE)) { parentsMet = true; break PARENTCHECK;}
+							if(t.getKey().equals(tome.getProgressIDs()[i]) && tome.getProgressBoolData()[i])
+							{
+								pcount++;
+							}
+						}
+						if(pcount == q.getParents().length) parentsMet = true;
+					}
+				}
+				if(parentsMet) hoverobjects.add(new GuiTomeHoverObject(tome, q.getX(), q.getY(), q.getSprite(), q.getName().getUnformattedComponentText(), q.getHoverText().getUnformattedComponentText(), id == -1 ? false : tome.getProgressBoolData()[id], q.getGreyText().getUnformattedComponentText(), q.getGoldText().getUnformattedComponentText()));
+			}
+		}
+		page = new GuiTomePage(tome, hoverobjects);
 		for(GuiTomeHoverObject ho : page.ho)
 		{
 			GuiTome.HoverObjectButton hoverButton = new GuiTome.HoverObjectButton(tome.guiLeft + ho.x, tome.guiTop + ho.y, 28, 28, " ", (p_213029_1_) -> { page.handleHoverObjectClickEvent(tome.mousePosX, tome.mousePosY );}); 

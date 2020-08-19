@@ -9,6 +9,7 @@ import mushroommantoad.mmpmod.init.ModEntities;
 import mushroommantoad.mmpmod.init.ModItems;
 import mushroommantoad.mmpmod.init.ModSoundEvents;
 import mushroommantoad.mmpmod.init.ModTileEntities;
+import mushroommantoad.mmpmod.init.ModTomeQuests;
 import mushroommantoad.mmpmod.itemgroups.ItemGroupVimion;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
 import mushroommantoad.mmpmod.proxy.ClientProxy;
@@ -44,6 +45,8 @@ public class Main {
 	VimionPacketHandler networkHandler = new VimionPacketHandler();
 
 	public static final ItemGroup vimion = new ItemGroupVimion();
+	
+	
 
 	public Main() {
 		instance = this;
@@ -51,7 +54,6 @@ public class Main {
 		networkHandler.registerPackets();
 		
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		
 		
 		modEventBus.addListener(this::setup);
 		modEventBus.addListener(this::clientRegistries);
@@ -114,6 +116,7 @@ public class Main {
 		@SubscribeEvent
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			ModItems.registerAll(event, logger);
+			ModTomeQuests.registerAll();
 		}
 
 		@SubscribeEvent

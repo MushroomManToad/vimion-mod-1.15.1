@@ -329,7 +329,7 @@ public class SolarionicAbominationEntity extends CreatureEntity implements IVimi
 		String name = entity.world.getDimension().toString();
 		char[] charname = name.toCharArray();
 		int i = 0;
-		for(char c : charname)
+		OUTERLOOP: for(char c : charname)
 		{
 			switch(c)
 			{
@@ -371,6 +371,7 @@ public class SolarionicAbominationEntity extends CreatureEntity implements IVimi
 			case('_'):	i = i + 27; break;
 			default:;			
 			}
+			if(c == '@') break OUTERLOOP;
 		}
 		int j = Math.floorMod(i, 5) + 1;
 		return j;

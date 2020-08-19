@@ -4,10 +4,14 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import mushroommantoad.mmpmod.init.ModTomeQuests;
+import mushroommantoad.mmpmod.tomequests.TomeQuest;
+import mushroommantoad.mmpmod.tomequests.clearcons.EmptyClearCondition;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -20,8 +24,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class ItemMemoryCrystal extends Item
 {
-	String[] nbtIDs = {"VimionAdvancements", "NecrionAdvancements", "SolarionAdvancements","NihilionAdvancements","ExpionAdvancements"};
-	
 	public ItemMemoryCrystal(Properties properties) 
 	{
 		super(properties);
@@ -34,13 +36,21 @@ public class ItemMemoryCrystal extends Item
 		{			
 			if(playerIn.isCrouching())
 			{
-				for(int i = 0; i < 5; i++)
+				CompoundNBT nbt = playerIn.getPersistentData();
+				if(nbt.contains("VimionTomeQuests"))
 				{
-					int[] emptiness = new int[100];
-					playerIn.getPersistentData().putIntArray(nbtIDs[i], emptiness);
+					CompoundNBT nNBT = new CompoundNBT();
+					nbt.put("VimionTomeQuests", nNBT);
+					for(TomeQuest q : ModTomeQuests.TOMEQUESTS)
+					{
+						if(q.getClearCondition() instanceof EmptyClearCondition)
+						{
+							q.clearClearCon(playerIn);
+						}
+					}					
+					playerIn.getHeldItem(handIn).shrink(1);
+					return new ActionResult<>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));
 				}
-				playerIn.getHeldItem(handIn).shrink(1);
-				return new ActionResult<>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));
 			}
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);

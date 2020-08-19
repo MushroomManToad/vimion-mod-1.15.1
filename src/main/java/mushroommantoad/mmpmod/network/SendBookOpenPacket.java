@@ -10,21 +10,37 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 public class SendBookOpenPacket 
 {
-	private int[] bookData;
+	private int arrayLength;
+	private boolean[] boolData;
+	private String[] idData;
 
-	public SendBookOpenPacket(int[] data) 
+	public SendBookOpenPacket(boolean[] booleanData, String[] idData) 
 	{
-		this.setBookData(data);
+		this.setArrayLength(booleanData.length);
+		this.setBoolData(booleanData);
+		this.setIDData(idData);
 	}
 	
 	public void serialize(PacketBuffer buf) 
 	{
-		buf.writeVarIntArray(this.getBookData());
+		buf.writeInt(this.getArrayLength());
+		for(int i = 0; i < this.getArrayLength(); i++) 
+		{
+			buf.writeBoolean(this.getBoolData()[i]);
+			buf.writeString(this.getIDData()[i]);
+		}
 	}
 	
 	public static SendBookOpenPacket deserialize(PacketBuffer buf) {
-		int[] data = buf.readVarIntArray();
-		return new SendBookOpenPacket(data);
+		int arrayL = buf.readInt();
+		boolean[] bools = new boolean[arrayL]; 
+		String[] ids = new String[arrayL]; 
+		for(int i = 0; i < arrayL; i++) 
+		{
+			bools[i] = buf.readBoolean();
+			ids[i] = buf.readString();
+		}
+		return new SendBookOpenPacket(bools, ids);
 	}
 	
 	public static void handle(SendBookOpenPacket message, Supplier<NetworkEvent.Context> contextSupplier) {
@@ -37,12 +53,28 @@ public class SendBookOpenPacket
 			context.setPacketHandled(true);
 		}
 	}
-
-	public int[] getBookData() {
-		return bookData;
+	
+	public String[] getIDData() {
+		return idData;
 	}
 
-	public void setBookData(int[] bookData) {
-		this.bookData = bookData;
+	public void setIDData(String[] idData) {
+		this.idData = idData;
+	}
+
+	public boolean[] getBoolData() {
+		return boolData;
+	}
+
+	public void setBoolData(boolean[] boolData) {
+		this.boolData = boolData;
+	}
+
+	public int getArrayLength() {
+		return arrayLength;
+	}
+
+	public void setArrayLength(int arrayLength) {
+		this.arrayLength = arrayLength;
 	}
 }

@@ -286,6 +286,6 @@ public class GuiTomeHoverObject
 	   String chapter = tome.chapter.getName();
 	   int page_number = tome.chapter.page_number;
 	   tome.getMinecraft().displayGuiScreen((Screen)null);
-	   Minecraft.getInstance().displayGuiScreen(new GuiTomeInfoPage(tome.getPlayer(), tome.getProgress(), chapter, page_number, this.isGold ? this.goldText : this.greyText));
+	   Minecraft.getInstance().displayGuiScreen(new GuiTomeInfoPage(tome.getPlayer(), tome.getProgressIDs(), tome.getProgressBoolData(), chapter, page_number, this.isGold ? this.goldText : this.greyText));
    }
 }

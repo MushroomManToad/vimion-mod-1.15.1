@@ -36,18 +36,20 @@ public class GuiTomeInfoPage extends Screen
 	int wrapWidth = 100;
 	
     PlayerEntity playerIn;
-    int[] progress;
+    String[] ids;
+    boolean[] boolData;
 	String oldChapter;
 	int oldPage;
 	String displayText;
 	int page = 0;
 	
-	protected GuiTomeInfoPage(PlayerEntity playerIn, int[] progress, String oldChapter, int oldPage, String displayText) 
+	protected GuiTomeInfoPage(PlayerEntity playerIn, String[] ids, boolean[] boolData, String oldChapter, int oldPage, String displayText) 
 	{
 		super(new StringTextComponent(" "));
 		
 		this.playerIn = playerIn;
-		this.progress = progress;
+		this.ids = ids;
+		this.boolData = boolData;
 		this.oldChapter = oldChapter;
 		this.oldPage = oldPage;
 		this.displayText = displayText;
@@ -91,7 +93,7 @@ public class GuiTomeInfoPage extends Screen
 	{
 		this.minecraft.displayGuiScreen((Screen)null);
 		
-		GuiTome tome = new GuiTome(playerIn, progress, oldChapter, oldPage);
+		GuiTome tome = new GuiTome(playerIn, ids, boolData, oldChapter, oldPage);
 		Minecraft.getInstance().displayGuiScreen(tome);
 	}
 	

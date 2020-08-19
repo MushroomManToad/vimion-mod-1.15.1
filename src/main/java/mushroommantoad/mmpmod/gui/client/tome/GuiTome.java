@@ -30,7 +30,8 @@ public class GuiTome extends Screen
     protected PlayerEntity player;
     protected GuiTomeChapter chapter;
     protected GuiTomeTabManager tabManager;
-    int[] progress;
+    String[] ids;
+    boolean[] boolData;
     
     int mousePosX = 0;
     int mousePosY = 0;
@@ -39,23 +40,25 @@ public class GuiTome extends Screen
     
     public TabHandlingButton tabHandler;
 	   
-	public GuiTome(PlayerEntity player, int[] progress) 
+	public GuiTome(PlayerEntity player, String[] ids, boolean[] boolData) 
 	{
 		// Set GUI Title
 		super(new StringTextComponent(" "));
 		
 		this.player = player;
-		this.progress = progress;
+		this.ids = ids;
+		this.boolData = boolData;
 	    this.chapter = new GuiTomeChapter(this, "vimion");
 	}
 	
-	public GuiTome(PlayerEntity player, int[] progress, String oldChapter, int oldPage) 
+	public GuiTome(PlayerEntity player, String[] ids, boolean[] boolData, String oldChapter, int oldPage) 
 	{
 		// Set GUI Title
 		super(new StringTextComponent(" "));
 		
 		this.player = player;
-		this.progress = progress;
+		this.ids = ids;
+		this.boolData = boolData;
 		this.chapter = new GuiTomeChapter(this, oldChapter, oldPage);
 	}
 
@@ -86,8 +89,8 @@ public class GuiTome extends Screen
 		
 		this.renderBackground();
 		chapter.drawBackground();
-		chapter.drawHoverObjects(mouseX, mouseY);
 		tabManager.tabTick(mouseX, mouseY);
+		chapter.drawHoverObjects(mouseX, mouseY);
 		super.render(mouseX, mouseY, partialTicks);
 	}
 	
@@ -96,9 +99,14 @@ public class GuiTome extends Screen
 		return player;
 	}
 	
-	public int[] getProgress()
+	public String[] getProgressIDs()
 	{
-		return this.progress;
+		return this.ids;
+	}
+	
+	public boolean[] getProgressBoolData()
+	{
+		return this.boolData;
 	}
 	
 	public FontRenderer getFontRenderer()

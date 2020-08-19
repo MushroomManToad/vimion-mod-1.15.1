@@ -16,6 +16,7 @@ import net.minecraft.entity.monster.ZombiePigmanEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
 import net.minecraft.world.World;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -46,16 +47,6 @@ public class MushroomsEventHandler
 				ItemStack note = new ItemStack(ModItems.vimionic_note, 1);
 				playerIn.addItemStackToInventory(note);
 				nbt.putBoolean("hasGottenNote", true);
-				int[] arr1 = new int[100];
-				int[] arr2 = new int[100];
-				int[] arr3 = new int[100];
-				int[] arr4 = new int[100];
-				int[] arr5 = new int[100];
-				nbt.putIntArray("VimionAdvancements", arr1);
-				nbt.putIntArray("NecrionAdvancements", arr2);
-				nbt.putIntArray("SolarionAdvancements", arr3);
-				nbt.putIntArray("NihilionAdvancements", arr4);
-				nbt.putIntArray("ExpionAdvancements", arr5);
 			}
 		}
 	}
@@ -65,22 +56,18 @@ public class MushroomsEventHandler
 	{
 		if(event.isWasDeath()) 
 		{
-			CompoundNBT compound = event.getOriginal().getPersistentData();
-			int[] Vim = compound.getIntArray("VimionAdvancements");
-			int[] Necr = compound.getIntArray("NecrionAdvancements");
-			int[] Solar = compound.getIntArray("SolarionAdvancements");
-			int[] Nihil = compound.getIntArray("NihilionAdvancements");
-			int[] Exp = compound.getIntArray("ExpionAdvancements");
+			CompoundNBT nbt = event.getOriginal().getPersistentData();
+			if (!nbt.contains("VimionTomeQuests", 9)) {
+				nbt.put("VimionTomeQuests", new ListNBT());
+			}
 			
-			boolean gotNote = compound.getBoolean("hasGottenNote");
+			CompoundNBT tomenbt = nbt.getCompound("VimionTomeQuests");
+			
+			boolean gotNote = nbt.getBoolean("hasGottenNote");
 			    
-			CompoundNBT nbt = event.getPlayer().getPersistentData();
-			nbt.putIntArray("VimionAdvancements", Vim);
-			nbt.putIntArray("NecrionAdvancements", Necr);
-			nbt.putIntArray("SolarionAdvancements", Solar);
-			nbt.putIntArray("NihilionAdvancements", Nihil);
-			nbt.putIntArray("ExpionAdvancements", Exp);
-			nbt.putBoolean("hasGottenNote", gotNote);
+			CompoundNBT compound = event.getPlayer().getPersistentData();
+			compound.put("VimionTomeQuests", tomenbt);
+			compound.putBoolean("hasGottenNote", gotNote);
 		}
 	}
 	

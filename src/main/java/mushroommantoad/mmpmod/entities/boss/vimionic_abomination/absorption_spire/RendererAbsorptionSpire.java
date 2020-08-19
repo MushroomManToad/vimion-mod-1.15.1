@@ -41,7 +41,7 @@ public class RendererAbsorptionSpire extends EntityRenderer<EntityAbsorptionSpir
 	    float scaleFactor = 2.0f;
 	    RenderSystem.scalef(scaleFactor, scaleFactor, scaleFactor);
 	    this.model.setRotationAngles(entityIn, partialTicks, 0.0F, entityIn.ticksExisted, 0.0F, 0.0F);
-	    this.model.render(matrixStackIn, ivertexbuilder, packedLightIn, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+	    this.model.render(matrixStackIn, ivertexbuilder, 180, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 	    RenderSystem.popMatrix();
 	    RenderSystem.enableCull();
 		super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);

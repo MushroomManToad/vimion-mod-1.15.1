@@ -1,10 +1,10 @@
 package mushroommantoad.mmpmod.items;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nullable;
 
+import mushroommantoad.mmpmod.init.ModTomeQuests;
 import mushroommantoad.mmpmod.network.SendBookOpenPacket;
 import mushroommantoad.mmpmod.network.VimionPacketHandler;
 import net.minecraft.client.util.ITooltipFlag;
@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
@@ -23,9 +24,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkDirection;
 
 public class ItemVimioniteTome extends Item
-{
-	String[] nbtIDs = {"VimionAdvancements", "NecrionAdvancements", "SolarionAdvancements","NihilionAdvancements","ExpionAdvancements"};
-	
+{	
 	public ItemVimioniteTome(Properties properties) 
 	{
 		super(properties);
@@ -36,23 +35,22 @@ public class ItemVimioniteTome extends Item
 	{
 		if(!worldIn.isRemote)
 		{			
-			ArrayList<Integer> vals = new ArrayList<>();
 			ServerPlayerEntity playerMP = (ServerPlayerEntity) playerIn;
-			for(int i = 0; i < 5; i++)
-			{
-				if(playerIn.getPersistentData().contains(nbtIDs[i]))
-					for(int j = 0; j < 100; j++)
-						vals.add(playerIn.getPersistentData().getIntArray(nbtIDs[i])[j]);
-				else
-					for(int j = 0; j < 100; j++)
-						vals.add(0);
+			CompoundNBT nbt = playerMP.getPersistentData();
+			if (!nbt.contains("VimionTomeQuests")) {
+				nbt.put("VimionTomeQuests", new CompoundNBT());
 			}
-			int[] values = new int[500];
-		    for (int i = 0; i < vals.size(); i++)
-		    {
-		    	values[i] = vals.get(i).intValue();
-		    }
-			VimionPacketHandler.CHANNEL.sendTo(new SendBookOpenPacket(values), playerMP.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
+			
+			CompoundNBT tomenbt = nbt.getCompound("VimionTomeQuests");
+			
+			boolean[] boolData = new boolean[ModTomeQuests.TOMEQUESTS.size()];
+			String[] idData = new String[ModTomeQuests.TOMEQUESTS.size()];
+			for(int i = 0; i < ModTomeQuests.TOMEQUESTS.size(); i++)
+			{
+				boolData[i] = tomenbt.contains(ModTomeQuests.TOMEQUESTS.get(i).getName().getKey()) ? tomenbt.getBoolean(ModTomeQuests.TOMEQUESTS.get(i).getName().getKey()) : false;
+				idData[i] = ModTomeQuests.TOMEQUESTS.get(i).getName().getKey();
+			}
+			VimionPacketHandler.CHANNEL.sendTo(new SendBookOpenPacket(boolData, idData), playerMP.connection.netManager, NetworkDirection.PLAY_TO_CLIENT);
 		}
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
